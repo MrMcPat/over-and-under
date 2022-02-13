@@ -14,7 +14,14 @@ function Homepage() {
   const [recipes, setRecipes] = useState([])
   const [search, setSearch] = useState("")
   const [advSearch, setAdvSearch] = useState({})
+  const [toggleSearch, setToggleSearch] = useState(false)
   const initRender = useRef(true)
+
+  const URL = toggleSearch ? 
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&minCarbs=${advSearch.minCarbs}&minProtein=${advSearch.minProtein}&minCalories=${advSearch.minCalories}&number=2&apiKey=${APIKey3}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=2&apiKey=${APIKey3}`
+
+  console.log(URL)
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -22,20 +29,27 @@ function Homepage() {
 
   function handleAdvSearch (newSearch) {
     setAdvSearch(newSearch)
+    console.log(advSearch)
   }
-  console.log(advSearch)
+
+  function handleToggleSearch() {
+    setToggleSearch(false)
+  }
+  
+  function handleToggleAdvSearch() {
+    setToggleSearch(true)
+  }
+  console.log(toggleSearch)
 
   useEffect(() => {
     if(initRender.current) {initRender.current=false} else {
-      fetch(
-        `https://api.spoonacular.com/recipes/complexSearch?query=${search}&cuisine=${advSearch.cuisine}&number=2&apiKey=${APIKey1}`//sample GET request limited to only 2
-      )
+      fetch(URL)
         .then((resp) => resp.json())
-        .then((data) => {setRecipes(data.results)
+        .then((data) => {
+          setRecipes(data.results)
         });
     }
-  }, [search]);
-
+  }, [toggleSearch ? advSearch : search]);
 
   return (
     <div>
@@ -55,7 +69,7 @@ function Homepage() {
               color="text.primary"
               gutterBottom
             >
-              <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch}/>
+              <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch}/>
             </Mui.Typography>
             <Mui.Stack
               sx={{ pt: 4 }}

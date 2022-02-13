@@ -2,20 +2,22 @@ import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
 import * as Mui from '@mui/material';
 
-function AdvancedSearch({search, onAdvSearch}) {
+function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
+  const [mealType, setMealType] = useState("")
   const [cuisine, setCuisine] = useState("")
   const [diet, setDiet] = useState("")
   const [intolerence, setIntolerence] = useState("")
   const [ingredients, setIngredients] = useState("")
-  const [minCarbs, setMinCarbs] = useState("45")
-  const [minProtein, setMinProtein] = useState("30")
-  const [minCalories, setMinCalories] = useState("500")
+  const [minCarbs, setMinCarbs] = useState(20)
+  const [minProtein, setMinProtein] = useState(10)
+  const [minCalories, setMinCalories] = useState(200)
   const history = useHistory()
 
   function handleSubmit (e) {
     e.preventDefault();
     const advSearchData = {
       search: search,
+      mealType: mealType,
       cuisine: cuisine,
       diet: diet,
       intolerence: intolerence,
@@ -34,6 +36,23 @@ function AdvancedSearch({search, onAdvSearch}) {
     <div>
       <form onSubmit={handleSubmit}>
       {/* Cuisine/intolerence/diet/includeingredients/minmaxcarbs/minmaxprotein/minmaxcalories/number */}
+        <select value={mealType} onChange={e => setMealType(e.target.value)}>
+          <option value="">Select Meal Type</option>
+          <option value="">Main Course</option>
+          <option value="">Side Dish</option>
+          <option value="">Dessert</option>
+          <option value="">Appetizer</option>
+          <option value="">Salad</option>
+          <option value="">Bread</option>
+          <option value="">Breakfast</option>
+          <option value="">Soup</option>
+          <option value="">Beverage</option>
+          <option value="">Sauce</option>
+          <option value="">Marinade</option>
+          <option value="">Fingerfood</option>
+          <option value="">Snack</option>
+          <option value="">Drink</option>
+        </select>
         <select value={cuisine} onChange={e => setCuisine(e.target.value)}>
           <option value="">Select Cuisine</option>
           <option value="african">African</option>
@@ -88,10 +107,10 @@ function AdvancedSearch({search, onAdvSearch}) {
           <option value="wheat">Wheat</option>
         </select>
         <Mui.TextField label="Include Ingredients" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
-        <input type="number" min="45" value={minCarbs} onChange={e => setMinCarbs(e.target.value)}></input>
-        <input type="number" min="30" value={minProtein} onChange={e => setMinProtein(e.target.value)}></input>
-        <input type="number" min="500" value={minCalories} onChange={e => setMinCalories(e.target.value)}></input>
-        <Mui.Button type="submit" variant="outlined">Search</Mui.Button>
+        <input type="number" min="20" value={minCarbs} onChange={e => setMinCarbs(e.target.value)}></input>
+        <input type="number" min="10" value={minProtein} onChange={e => setMinProtein(e.target.value)}></input>
+        <input type="number" min="200" value={minCalories} onChange={e => setMinCalories(e.target.value)}></input>
+        <Mui.Button type="submit" variant="outlined" onClick={onToggleAdvSearch}>Search</Mui.Button>
       </form>
 
     </div>
