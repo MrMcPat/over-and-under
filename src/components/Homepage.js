@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Route, Switch } from "react-router-dom";
 import * as Mui from "@mui/material";
 import Search from "./page parts/Search";
@@ -12,15 +12,30 @@ const APIKey4 = "706bae3484f3466a81bd4afe4a6b402a";
 
 function Homepage() {
   const [recipes, setRecipes] = useState([])
+  const [search, setSearch] = useState("")
+  const [advSearch, setAdvSearch] = useState({})
+  const initRender = useRef(true)
+
+  function handleSearch (newSearch) {
+    setSearch(newSearch)
+  }
+
+  function handleAdvSearch (newSearch) {
+    setAdvSearch(newSearch)
+  }
+  console.log(advSearch)
 
   useEffect(() => {
-    fetch(
-      `https://api.spoonacular.com/recipes/complexSearch?query=pasta&number=2&apiKey=${APIKey4}`//sample GET request limited to only 2
-    )
-      .then((resp) => resp.json())
-      .then((data) => {setRecipes(data.results)
-      });
-  }, []);
+    if(initRender.current) {initRender.current=false} else {
+      fetch(
+        `https://api.spoonacular.com/recipes/complexSearch?query=${search}&cuisine=${advSearch.cuisine}&number=2&apiKey=${APIKey1}`//sample GET request limited to only 2
+      )
+        .then((resp) => resp.json())
+        .then((data) => {setRecipes(data.results)
+        });
+    }
+  }, [search]);
+
 
   return (
     <div>
@@ -40,7 +55,7 @@ function Homepage() {
               color="text.primary"
               gutterBottom
             >
-              <Search />
+              <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch}/>
             </Mui.Typography>
             <Mui.Stack
               sx={{ pt: 4 }}

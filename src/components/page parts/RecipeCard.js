@@ -4,8 +4,7 @@ import * as Mui from "@mui/material";
 function RecipeCard({recipe}) {
 
   function handleClick() {
-    console.log(recipe.id)
-      fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`)
+      fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=true&apiKey=ad6d7e06596a42319494ac3917c53649`)
       .then(resp => resp.json())
       .then(data => console.log(data))
   }

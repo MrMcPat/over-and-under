@@ -5,7 +5,7 @@ function RecipeContainer({recipes}) {
   
   const recipeCard = recipes.map(recipe => {
     return <RecipeCard key={recipe.id} recipe={recipe}/>
-  })
+  })  
 
   return (
     <div>
