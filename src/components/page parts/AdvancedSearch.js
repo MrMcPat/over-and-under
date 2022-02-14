@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import { NavLink, useHistory } from "react-router-dom";
 import * as Mui from '@mui/material';
 
-function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
+function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder}) {
+  const [toggleOverUnder, setToggleOverUnder] = useState(false)
   const [mealType, setMealType] = useState("")
   const [cuisine, setCuisine] = useState("")
   const [diet, setDiet] = useState("")
@@ -32,6 +33,20 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
     })
   }
 
+  function handleOverUnder () {
+    setToggleOverUnder(toggleOverUnder => !toggleOverUnder)
+    onOverUnder(toggleOverUnder)
+    if(toggleOverUnder) {
+      setCarbs(20)
+      setProtein(10)
+      setCalories(200)
+    } else {
+      setCarbs(0)
+      setProtein(0)
+      setCalories(0)
+    }
+  }
+  
   return (
     <div>
       <NavLink to="/"><Mui.Button>Back</Mui.Button></NavLink>
@@ -107,10 +122,11 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
           <option value="wheat">Wheat</option>
         </select>
         <Mui.TextField label="Include Ingredients" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
-        <input type="number" min="20" value={carbs} onChange={e => setCarbs(e.target.value)}></input>
-        <input type="number" min="10" value={protein} onChange={e => setProtein(e.target.value)}></input>
-        <input type="number" min="200" value={calories} onChange={e => setCalories(e.target.value)}></input>
+        <input type="number" min={toggleOverUnder ? "0" : "20"} max={toggleOverUnder ? "40" : "99999"} value={carbs} onChange={e => setCarbs(e.target.value)}></input>
+        <input type="number" min={toggleOverUnder ? "0" : "10"} max={toggleOverUnder ? "30" : "99999"} value={protein} onChange={e => setProtein(e.target.value)}></input>
+        <input type="number" min={toggleOverUnder ? "0" : "200"} max={toggleOverUnder ? "600" : "99999"} value={calories} onChange={e => setCalories(e.target.value)}></input>
         <Mui.Button type="submit" variant="outlined" onClick={onToggleAdvSearch}>Search</Mui.Button>
+        <Mui.Switch defaultChecked color="warning" onClick={handleOverUnder}/>
       </form>
 
     </div>

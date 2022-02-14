@@ -20,8 +20,8 @@ function Homepage() {
   const initRender = useRef(true)
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey1}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=2&apiKey=${APIKey1}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey2}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=2&apiKey=${APIKey2}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -39,8 +39,8 @@ function Homepage() {
     setToggleSearch(true)
   }
 
-  function handleOverUnder () {
-    setToggleOverUnder(toggleOverUnder => !toggleOverUnder)
+  function handleOverUnder (toggle) {
+    setToggleOverUnder(toggle => !toggle)
     console.log(toggleOverUnder)
   }
 
@@ -72,7 +72,7 @@ function Homepage() {
               color="text.primary"
               gutterBottom
             >
-              <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch}/>
+              <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} onOverUnder={handleOverUnder}/>
             </Mui.Typography>
             <Mui.Stack
               sx={{ pt: 4 }}
@@ -94,7 +94,7 @@ function Homepage() {
             </Route>
           </Switch>
         </Mui.Box>
-        <Mui.Switch defaultChecked color="warning" onClick={handleOverUnder}/>
+
 
         {/* <Mui.Container sx={{ py: 8 }} maxWidth="md">
           <Mui.Grid container spacing={4}>

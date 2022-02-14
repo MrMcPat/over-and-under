@@ -4,7 +4,7 @@ import { Route, NavLink } from "react-router-dom";
 import * as Mui from '@mui/material';
 import AdvancedSearch from './AdvancedSearch'
 
-function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch}) {
+function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOverUnder}) {
   const [search, setSearch] = useState("")
   const history = useHistory()
 
@@ -24,7 +24,7 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch}) {
       </form>
       <NavLink to="/advancedsearch"><Mui.Button>Adv Search</Mui.Button></NavLink>
          <Route path="/advancedsearch">
-          <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onToggleAdvSearch={onToggleAdvSearch}/>
+          <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onToggleAdvSearch={onToggleAdvSearch} onOverUnder={onOverUnder}/>
         </Route>
     </div>
   )
