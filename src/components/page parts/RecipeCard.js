@@ -4,9 +4,25 @@ import * as Mui from "@mui/material";
 
 function RecipeCard({recipe}) {
 
+  function handleClick() {
+    fetch("http://localhost:8000/recipes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        recipeId: recipe.id,
+        title: recipe.title,
+        image: recipe.image,
+      })
+    })
+    .then(resp => resp.json())
+    .then(data => console.log(data))
+  }
+
   return (
     <div>
-              <Mui.Grid item key={recipe.id} xs={1} sm={1} md={4}>
+              <Mui.Grid item key={recipe.id} xs={12} sm={6} md={4}>
                 <Mui.Card
                   sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
                 >
@@ -27,6 +43,7 @@ function RecipeCard({recipe}) {
                   </Mui.CardContent>
                   <Mui.CardActions>
                     <Link to={`/reciperesults/${recipe.id}`}><Mui.Button size="small">View</Mui.Button></Link>
+                    <Mui.Button size="small" onClick={handleClick}>Fav</Mui.Button>
                   </Mui.CardActions>
                 </Mui.Card>
               </Mui.Grid>
