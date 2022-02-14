@@ -6,7 +6,7 @@ const params = useParams()
 const [recipeInfo, setRecipeInfo] = useState([])
 
 useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=10f404130be14caf8274ea22151509b7`)
+    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`)
     .then(resp => resp.json())
     .then(data => {setRecipeInfo(data)})
 }, [])
@@ -21,9 +21,9 @@ useEffect(() => {
         <img src={recipeInfo.image}></img>
         <h1>{recipeInfo.title}</h1>
         <h2>Nutrition Facts</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=10f404130be14caf8274ea22151509b7`} height="710" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`} height="710" width="1000"></iframe>
         <h2>Ingredients</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=10f404130be14caf8274ea22151509b7`} height="400" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=706bae3484f3466a81bd4afe4a6b402a`} height="400" width="1000"></iframe>
         <h2>Instructions</h2>
         <ol>
             {instructionsArray.map(step => {
@@ -31,7 +31,7 @@ useEffect(() => {
             })}
         </ol>
         <h2>Equipment</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=10f404130be14caf8274ea22151509b7`} height="200" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`} height="200" width="1000"></iframe>
     </div>
   )
 }
