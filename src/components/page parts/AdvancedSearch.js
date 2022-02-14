@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import * as Mui from '@mui/material';
 
 function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
@@ -8,9 +8,9 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
   const [diet, setDiet] = useState("")
   const [intolerence, setIntolerence] = useState("")
   const [ingredients, setIngredients] = useState("")
-  const [minCarbs, setMinCarbs] = useState(20)
-  const [minProtein, setMinProtein] = useState(10)
-  const [minCalories, setMinCalories] = useState(200)
+  const [carbs, setCarbs] = useState(20)
+  const [protein, setProtein] = useState(10)
+  const [calories, setCalories] = useState(200)
   const history = useHistory()
 
   function handleSubmit (e) {
@@ -22,9 +22,9 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
       diet: diet,
       intolerence: intolerence,
       ingredients: ingredients,
-      minCarbs: minCarbs,
-      minProtein: minProtein,
-      minCalories: minCalories
+      carbs: carbs,
+      protein: protein,
+      calories: calories
     }
     onAdvSearch(advSearchData)
     history.push({
@@ -34,8 +34,8 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
 
   return (
     <div>
+      <NavLink to="/"><Mui.Button>Back</Mui.Button></NavLink>
       <form onSubmit={handleSubmit}>
-      {/* Cuisine/intolerence/diet/includeingredients/minmaxcarbs/minmaxprotein/minmaxcalories/number */}
         <select value={mealType} onChange={e => setMealType(e.target.value)}>
           <option value="">Select Meal Type</option>
           <option value="">Main Course</option>
@@ -107,9 +107,9 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch}) {
           <option value="wheat">Wheat</option>
         </select>
         <Mui.TextField label="Include Ingredients" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
-        <input type="number" min="20" value={minCarbs} onChange={e => setMinCarbs(e.target.value)}></input>
-        <input type="number" min="10" value={minProtein} onChange={e => setMinProtein(e.target.value)}></input>
-        <input type="number" min="200" value={minCalories} onChange={e => setMinCalories(e.target.value)}></input>
+        <input type="number" min="20" value={carbs} onChange={e => setCarbs(e.target.value)}></input>
+        <input type="number" min="10" value={protein} onChange={e => setProtein(e.target.value)}></input>
+        <input type="number" min="200" value={calories} onChange={e => setCalories(e.target.value)}></input>
         <Mui.Button type="submit" variant="outlined" onClick={onToggleAdvSearch}>Search</Mui.Button>
       </form>
 

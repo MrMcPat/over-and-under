@@ -4,6 +4,7 @@ import * as Mui from "@mui/material";
 import Search from "./page parts/Search";
 import RecipeContainer from "./page parts/RecipeContainer";
 import FavoriteContainer from "./page parts/FavoriteContainer";
+import RecipePage from "./page parts/RecipePage"
 
 const APIKey1 = "ad6d7e06596a42319494ac3917c53649";
 const APIKey2 = "10f404130be14caf8274ea22151509b7";
@@ -15,13 +16,12 @@ function Homepage() {
   const [search, setSearch] = useState("")
   const [advSearch, setAdvSearch] = useState({})
   const [toggleSearch, setToggleSearch] = useState(false)
+  const [toggleOverUnder, setToggleOverUnder] = useState(false)
   const initRender = useRef(true)
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&minCarbs=${advSearch.minCarbs}&minProtein=${advSearch.minProtein}&minCalories=${advSearch.minCalories}&number=2&apiKey=${APIKey3}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=2&apiKey=${APIKey3}`
-
-  console.log(URL)
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey1}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=2&apiKey=${APIKey1}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -29,7 +29,6 @@ function Homepage() {
 
   function handleAdvSearch (newSearch) {
     setAdvSearch(newSearch)
-    console.log(advSearch)
   }
 
   function handleToggleSearch() {
@@ -39,7 +38,11 @@ function Homepage() {
   function handleToggleAdvSearch() {
     setToggleSearch(true)
   }
-  console.log(toggleSearch)
+
+  function handleOverUnder () {
+    setToggleOverUnder(toggleOverUnder => !toggleOverUnder)
+    console.log(toggleOverUnder)
+  }
 
   useEffect(() => {
     if(initRender.current) {initRender.current=false} else {
@@ -80,14 +83,18 @@ function Homepage() {
           </Mui.Container>
 
           <Switch>
-            <Route path="/reciperesults">
-              <RecipeContainer recipes={recipes} />
-            </Route>
             <Route path="/favoriterecipes">
               <FavoriteContainer />
             </Route>
+            <Route exact path="/reciperesults">
+              <RecipeContainer recipes={recipes} />
+            </Route>
+            <Route path="/reciperesults/:id">
+              <RecipePage />
+            </Route>
           </Switch>
         </Mui.Box>
+        <Mui.Switch defaultChecked color="warning" onClick={handleOverUnder}/>
 
         {/* <Mui.Container sx={{ py: 8 }} maxWidth="md">
           <Mui.Grid container spacing={4}>

@@ -1,19 +1,15 @@
 import React from 'react'
+import { Link, Route } from "react-router-dom";
 import * as Mui from "@mui/material";
+import RecipePage from './RecipePage';
 
 function RecipeCard({recipe}) {
-
-  function handleClick() {
-      fetch(`https://api.spoonacular.com/recipes/${recipe.id}/information?includeNutrition=true&apiKey=ad6d7e06596a42319494ac3917c53649`)
-      .then(resp => resp.json())
-      .then(data => console.log(data))
-  }
 
   return (
     <div>
       <img src={recipe.image} />
       <h1>{recipe.title}</h1>
-      <button onClick={handleClick}>View</button>
+      <Link to={`/reciperesults/${recipe.id}`}><button onClick={null}>View</button></Link>
     </div>
   )
 }
