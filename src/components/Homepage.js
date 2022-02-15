@@ -62,8 +62,6 @@ function Homepage() {
     .then(data => setFavRecipes(data))
   }, [])
 
-  console.log(favRecipes)
-
   return (
     <div>
       <main>
@@ -73,6 +71,7 @@ function Homepage() {
             pt: 8,
             pb: 6,
           }}
+          
         >
           <Mui.Container maxWidth="sm">
             <Mui.Typography

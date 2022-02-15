@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .search-form {
+  position: relative;
+  top: 200px;
+}
+
+.search-form-animate {
+  position: relative;
+  animation: slideUp ease 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideUp{
+  0% {
+    top: 200px;
+  }
+  100% {
+    top: 0px;
+  }
+} */

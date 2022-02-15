@@ -9,6 +9,16 @@
       "title": "Rice Pilaf",
       "image": "https://spoonacular.com/recipeImages/658277-312x231.jpg",
       "id": 3
+    },
+    {
+      "title": "Salad With Apples, Gorgonzola and Walnuts",
+      "image": "https://spoonacular.com/recipeImages/659015-312x231.jpg",
+      "id": 4
+    },
+    {
+      "title": "Egg Salad Wrap",
+      "image": "https://spoonacular.com/recipeImages/1096010-312x231.jpg",
+      "id": 5
     }
   ]
 }

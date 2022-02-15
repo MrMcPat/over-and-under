@@ -50,6 +50,7 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder}) {
   return (
     <div>
       <NavLink to="/"><Mui.Button>Back</Mui.Button></NavLink>
+      <Mui.Typography variant="h6">{toggleOverUnder ? "Under" : "Over"}</Mui.Typography>
       <form onSubmit={handleSubmit}>
         <select value={mealType} onChange={e => setMealType(e.target.value)}>
           <option value="">Select Meal Type</option>

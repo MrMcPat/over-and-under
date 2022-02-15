@@ -2,6 +2,8 @@ import React, {useState} from 'react'
 import { useHistory } from "react-router-dom";
 import { Route, NavLink } from "react-router-dom";
 import * as Mui from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
+import SettingsIcon from '@mui/icons-material/Settings';
 import AdvancedSearch from './AdvancedSearch'
 
 function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOverUnder}) {
@@ -19,10 +21,14 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOve
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <Mui.TextField id="filled-basic" label="Search" variant="filled" value={search} onChange={e => setSearch(e.target.value)}/>
-        <Mui.Button type="submit" variant="outlined" onClick={onToggleSearch}>Search</Mui.Button>
+        <Mui.TextField id="filled-basic" label="Search" variant="standard" value={search} onChange={e => setSearch(e.target.value)}/>
+        <NavLink to="/advancedsearch"><SettingsIcon/></NavLink>
+        <Mui.Fab type="submit" color="primary" onClick={onToggleSearch} size="small">
+          <SearchIcon />
+        </Mui.Fab>
       </form>
-      <NavLink to="/advancedsearch"><Mui.Button>Adv Search</Mui.Button></NavLink>
+
+
          <Route path="/advancedsearch">
           <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onToggleAdvSearch={onToggleAdvSearch} onOverUnder={onOverUnder}/>
         </Route>
