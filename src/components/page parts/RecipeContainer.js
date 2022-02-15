@@ -2,9 +2,9 @@ import React from "react";
 import RecipeCard from "./RecipeCard";
 import * as Mui from "@mui/material";
 
-function RecipeContainer({ recipes }) {
+function RecipeContainer({ recipes, onNoDupes }) {
   const recipeCard = recipes.map((recipe) => {
-    return <RecipeCard key={recipe.id} recipe={recipe} />;
+    return <RecipeCard key={recipe.id} recipe={recipe} onNoDupes={onNoDupes}/>;
   });
 
   return (

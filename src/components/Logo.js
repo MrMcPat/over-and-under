@@ -3,7 +3,11 @@ import {NavLink} from "react-router-dom"
 
 function Logo() {
   return (
+    <div>
     <NavLink to="/">OverAndUnder</NavLink>
+    <NavLink to="/favoriterecipes">Favorite Recipes</NavLink>
+    </div>
+
   )
 }
 

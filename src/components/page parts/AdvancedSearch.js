@@ -122,8 +122,14 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder}) {
           <option value="wheat">Wheat</option>
         </select>
         <Mui.TextField label="Include Ingredients" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
+        <br/>
+        <label>{toggleOverUnder ? "Max Carbs" : "Min Carbs"}</label>
         <input type="number" min={toggleOverUnder ? "0" : "20"} max={toggleOverUnder ? "40" : "99999"} value={carbs} onChange={e => setCarbs(e.target.value)}></input>
+        <br/>
+        <label>{toggleOverUnder ? "Max Protein" : "Min Protein"}</label>
         <input type="number" min={toggleOverUnder ? "0" : "10"} max={toggleOverUnder ? "30" : "99999"} value={protein} onChange={e => setProtein(e.target.value)}></input>
+        <br/>
+        <label>{toggleOverUnder ? "Max Calories" : "Min Calories"}</label>
         <input type="number" min={toggleOverUnder ? "0" : "200"} max={toggleOverUnder ? "600" : "99999"} value={calories} onChange={e => setCalories(e.target.value)}></input>
         <Mui.Button type="submit" variant="outlined" onClick={onToggleAdvSearch}>Search</Mui.Button>
         <Mui.Switch defaultChecked color="warning" onClick={handleOverUnder}/>

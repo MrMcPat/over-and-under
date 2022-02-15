@@ -41,7 +41,6 @@ function Homepage() {
 
   function handleOverUnder (toggle) {
     setToggleOverUnder(toggle => !toggle)
-    console.log(toggleOverUnder)
   }
 
   useEffect(() => {

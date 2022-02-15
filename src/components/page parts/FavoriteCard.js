@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import * as Mui from "@mui/material";
 
 function FavoriteCard({recipe, onDelete}) {
+
   function handleClick() {
     console.log(recipe.id)
     fetch(`http://localhost:8000/recipes/${recipe.id}`, {
-      method: "DELETE"
+      method: "DELETE",
     })
     .then(resp => resp.json())
     .then(() => onDelete(recipe.id))
