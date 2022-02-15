@@ -19,15 +19,6 @@ function FavoriteContainer() {
      setFavRecipes(updatedRecipes)
   }
 
-  function handleNoDupes (clickedRecipe) {
-    const singleRecipe = favRecipes.find(recipe => {
-      return recipe.id === clickedRecipe.id
-    })
-    if(!singleRecipe) {
-      setFavRecipes([...favRecipes, clickedRecipe])
-    }
-  }
-
   const filteredRecipes = favRecipes.filter(recipe => {
     return recipe.title.toLowerCase().includes(filter.toLowerCase())
   })

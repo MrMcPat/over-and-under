@@ -5,6 +5,7 @@ function Logo() {
   return (
     <div>
     <NavLink to="/">OverAndUnder</NavLink>
+    <NavLink to="/reciperesults">See Recipe Results</NavLink>
     <NavLink to="/favoriterecipes">Favorite Recipes</NavLink>
     </div>
 

@@ -4,7 +4,9 @@ import * as Mui from "@mui/material";
 import Search from "./page parts/Search";
 import RecipeContainer from "./page parts/RecipeContainer";
 import FavoriteContainer from "./page parts/FavoriteContainer";
-import RecipePage from "./page parts/RecipePage"
+import RecipePage from "./page parts/RecipePage";
+import HomepageRecipes from "./HomepageRecipes";
+import defaultRecipes from "../data/defaultrecipes";
 
 const APIKey1 = "ad6d7e06596a42319494ac3917c53649";
 const APIKey2 = "10f404130be14caf8274ea22151509b7";
@@ -13,6 +15,7 @@ const APIKey4 = "706bae3484f3466a81bd4afe4a6b402a";
 
 function Homepage() {
   const [recipes, setRecipes] = useState([])
+  const [favRecipes, setFavRecipes] = useState([])
   const [search, setSearch] = useState("")
   const [advSearch, setAdvSearch] = useState({})
   const [toggleSearch, setToggleSearch] = useState(false)
@@ -20,8 +23,8 @@ function Homepage() {
   const initRender = useRef(true)
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey4}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=2&apiKey=${APIKey4}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey1}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=2&apiKey=${APIKey1}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -52,6 +55,14 @@ function Homepage() {
         });
     }
   }, [toggleSearch ? advSearch : search]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/recipes")
+    .then(resp => resp.json())
+    .then(data => setFavRecipes(data))
+  }, [])
+
+  console.log(favRecipes)
 
   return (
     <div>
@@ -89,44 +100,12 @@ function Homepage() {
               <RecipeContainer recipes={recipes} />
             </Route>
             <Route path="/reciperesults/:id">
-              <RecipePage />
+              <RecipePage favRecipes={favRecipes}/>
             </Route>
           </Switch>
         </Mui.Box>
 
-
-        {/* <Mui.Container sx={{ py: 8 }} maxWidth="md">
-          <Mui.Grid container spacing={4}>
-            {recipes.map(recipe => (
-              <Mui.Grid item key={recipe.id} xs={12} sm={6} md={4}>
-                <Mui.Card
-                  sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-                >
-                  <Mui.CardMedia
-                    component="img"
-                    sx={{
-                      // 16:9
-                      pt: '56.25%',
-                    }}
-                    image="https://cdn.shopify.com/s/files/1/0054/4371/5170/products/PatrickStar_467pin.png?v=1627414164"
-                    alt="random"
-                  />
-                  <Mui.CardContent sx={{ flexGrow: 1 }}>
-                    <Mui.Typography gutterBottom variant="h5" component="h2">
-                      Recipe Title
-                    </Mui.Typography>
-                    <Mui.Typography>
-                      Dummy Text
-                    </Mui.Typography>
-                  </Mui.CardContent>
-                  <Mui.CardActions>
-                    <Mui.Button size="small">View</Mui.Button>
-                  </Mui.CardActions>
-                </Mui.Card>
-              </Mui.Grid>
-            ))}
-          </Mui.Grid>
-        </Mui.Container> */}
+          {/* <HomepageRecipes defaultRecipes={defaultRecipes}/> */}
       </main>
     </div>
   );

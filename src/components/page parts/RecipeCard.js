@@ -1,23 +1,31 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 import * as Mui from "@mui/material";
 
-function RecipeCard({recipe}) {
+function RecipeCard({recipe, favRecipes}) {
+  const [isClicked, setIsClicked] = useState(false)
 
   function handleClick() {
-    fetch("http://localhost:8000/recipes", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        recipeId: recipe.id,
-        title: recipe.title,
-        image: recipe.image,
-      })
+    setIsClicked(true)
+    const clickedRecipes = favRecipes.find(favRecipe => {
+      return favRecipe.recipeId === recipe.id
     })
-    .then(resp => resp.json())
-    .then(data => console.log(data))
+    if (clickedRecipes) {alert("Already added to favorites!")}
+    if (!clickedRecipes) {
+      fetch("http://localhost:8000/recipes", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          recipeId: recipe.id,
+          title: recipe.title,
+          image: recipe.image,
+        })
+      })
+      .then(resp => resp.json())
+      .then(data => console.log(data))
+    }
   }
 
   return (
@@ -43,7 +51,7 @@ function RecipeCard({recipe}) {
                   </Mui.CardContent>
                   <Mui.CardActions>
                     <Link to={`/reciperesults/${recipe.id}`}><Mui.Button size="small">View</Mui.Button></Link>
-                    <Mui.Button size="small" onClick={handleClick}>Fav</Mui.Button>
+                    <Mui.Button size="small" onClick={handleClick} disabled={isClicked}>Fav</Mui.Button>
                   </Mui.CardActions>
                 </Mui.Card>
               </Mui.Grid>
