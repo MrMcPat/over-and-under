@@ -12,6 +12,21 @@ code {
     monospace;
 }
 
+#app-logo {
+  font-weight: bold;
+}
+
+.navlink {
+  color: white !important;
+  text-decoration: none;
+  padding: 20px;
+}
+
+#form-container {
+
+  margin: auto;
+}
+
 /* .search-form {
   position: relative;
   top: 200px;

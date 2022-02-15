@@ -20,7 +20,7 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOve
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form id="form-container" onSubmit={handleSubmit}>
         <Mui.TextField id="filled-basic" label="Search" variant="standard" value={search} onChange={e => setSearch(e.target.value)}/>
         <NavLink to="/advancedsearch"><SettingsIcon/></NavLink>
         <Mui.Fab type="submit" color="primary" onClick={onToggleSearch} size="small">

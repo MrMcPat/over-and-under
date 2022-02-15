@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
 import * as Mui from "@mui/material";
+import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 
 function Logo() {
   return (
@@ -8,14 +9,14 @@ function Logo() {
     <Mui.Box sx={{ flexGrow: 1 }}>
     <Mui.AppBar position="static">
       <Mui.Toolbar variant="dense">
-        <Mui.Typography variant="h5" color="inherit">
-        <NavLink to="/">OverAndUnder</NavLink>
+        <Mui.Typography variant="h5" sx={{ flexGrow: 1 }}>
+        <NavLink id="app-logo" className="navlink" to="/">OverAndUnder</NavLink>
         </Mui.Typography>
-        <Mui.Typography variant="h5" color="inherit" sx={{ flexGrow: 1 }}>
-        <NavLink to="/reciperesults">See Recipe Results</NavLink>
+        <Mui.Typography variant="h5">
+        <NavLink className="navlink" to="/reciperesults">See Recipe Results</NavLink>
         </Mui.Typography>
-        <Mui.Typography variant="h5" color="inherit">
-        <NavLink to="/favoriterecipes">Favorite Recipes</NavLink>
+        <Mui.Typography variant="h5">
+        <NavLink className="navlink" to="/favoriterecipes">Favorite Recipes</NavLink>
         </Mui.Typography>
       </Mui.Toolbar>
     </Mui.AppBar>
