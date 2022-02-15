@@ -1,3 +1,14 @@
 {
-  "recipes": []
+  "recipes": [
+    {
+      "title": "Rice Pudding",
+      "image": "https://spoonacular.com/recipeImages/658276-312x231.jpg",
+      "id": 2
+    },
+    {
+      "title": "Rice Pilaf",
+      "image": "https://spoonacular.com/recipeImages/658277-312x231.jpg",
+      "id": 3
+    }
+  ]
 }

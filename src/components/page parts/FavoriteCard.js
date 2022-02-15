@@ -12,11 +12,13 @@ function FavoriteCard({ recipe, onDelete }) {
       .then(() => onDelete(recipe.id));
   }
 
+  let extractedId = recipe.image.split('/recipeImages/')[1].split('-')[0]
+
   return (
     <div>
       <img src={recipe.image}></img>
       <p>{recipe.title}</p>
-      <Link to={`/reciperesults/${recipe.recipeId}`}>
+      <Link to={`/reciperesults/${extractedId}`}>
         <Mui.Button size="small">View</Mui.Button>
       </Link>
       <Mui.Button size="small" onClick={handleClick}>

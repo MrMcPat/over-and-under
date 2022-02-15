@@ -8,7 +8,7 @@ function RecipeCard({recipe, favRecipes}) {
   function handleClick() {
     setIsClicked(true)
     const clickedRecipes = favRecipes.find(favRecipe => {
-      return favRecipe.recipeId === recipe.id
+      return favRecipe.title === recipe.title
     })
     if (clickedRecipes) {alert("Already added to favorites!")}
     if (!clickedRecipes) {
@@ -18,7 +18,6 @@ function RecipeCard({recipe, favRecipes}) {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          recipeId: recipe.id,
           title: recipe.title,
           image: recipe.image,
         })

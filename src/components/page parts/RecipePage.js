@@ -21,7 +21,7 @@ useEffect(() => {
     function handleClick() {
         setIsClicked(true)
         const clickedRecipes = favRecipes.find(favRecipe => {
-            return favRecipe.recipeId === recipeInfo.id
+            return favRecipe.title === recipeInfo.title
           })
           if (clickedRecipes) {alert("Already added to favorites!")}
           if (!clickedRecipes) {
@@ -31,7 +31,6 @@ useEffect(() => {
                 "Content-Type": "application/json"
               },
               body: JSON.stringify({
-                recipeId: recipeInfo.id,
                 title: recipeInfo.title,
                 image: recipeInfo.image,
               })
