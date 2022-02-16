@@ -14,8 +14,6 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
 
-
-
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -26,7 +24,6 @@ const ExpandMore = styled((props) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
-
 
 function RecipeCard({recipe, favRecipes}) {
   const [isClicked, setIsClicked] = useState(false)

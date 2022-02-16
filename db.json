@@ -76,6 +76,17 @@
       "proteinAmount": 16.9233,
       "carbAmount": 7.01414,
       "id": 7
+    },
+    {
+      "title": "Fish Crocchette Appetizer",
+      "image": "https://spoonacular.com/recipeImages/642927-312x231.jpg",
+      "calorie": "Calories",
+      "protein": "Protein",
+      "carb": "Carbohydrates",
+      "calorieAmount": 388.27,
+      "proteinAmount": 25.3222,
+      "carbAmount": 25.3362,
+      "id": 8
     }
   ]
 }
