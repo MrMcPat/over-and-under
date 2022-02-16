@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { NavLink, useHistory } from "react-router-dom";
 import * as Mui from '@mui/material';
 
 function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder, onBackgroundColor}) {
-  const [toggleOverUnder, setToggleOverUnder] = useState(sessionStorage.getItem("sessionStorageKey") || false)
+  const [toggleOverUnder, setToggleOverUnder] = useState(false)
   const [mealType, setMealType] = useState("")
   const [cuisine, setCuisine] = useState("")
   const [diet, setDiet] = useState("")
@@ -33,14 +33,11 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder, on
     })
   }
 
-  useEffect(() => {
-    sessionStorage.setItem("sessionStorageKey", toggleOverUnder)
-  }, [toggleOverUnder])
-
-  function handleOverUnder () {
+  function handleOverUnder (e) {
     setToggleOverUnder(toggleOverUnder => !toggleOverUnder)
     onOverUnder(toggleOverUnder)
     onBackgroundColor()
+    console.log(e.target.checked)
     if(toggleOverUnder) {
       setCarbs(20)
       setProtein(10)

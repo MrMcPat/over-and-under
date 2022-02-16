@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Route, Switch, NavLink } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import * as Mui from "@mui/material";
 import Search from "./page parts/Search";
 import RecipeContainer from "./page parts/RecipeContainer";
@@ -7,6 +7,7 @@ import FavoriteContainer from "./page parts/FavoriteContainer";
 import RecipePage from "./page parts/RecipePage";
 import HomepageRecipes from "./HomepageRecipes";
 import defaultRecipes from "../data/defaultrecipes";
+import appLogo from "../assets/over-and-under-dark.png"
 
 const APIKey1 = "ad6d7e06596a42319494ac3917c53649";
 const APIKey2 = "10f404130be14caf8274ea22151509b7";
@@ -23,8 +24,8 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
   const initRender = useRef(true)
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey3}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey3}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey1}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey1}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -66,8 +67,6 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
     <div>
         <Mui.Box sx={{bgcolor: "background.paper", pt: 8, pb: 6,}} style={{background: "transparent"}}>
           <Mui.Container maxWidth="sm">
- 
-              
             <Mui.Typography component="div" variant="h2" align="center" color="text.primary" gutterBottom>
             <Mui.Typography className={landingPage ? "display-none" : ""}component="h2" variant="h2">OverAndUnder<br/>
             <Mui.Button variant="outlined" onClick={onLandingPage}>Get Started</Mui.Button></Mui.Typography>

@@ -27,7 +27,7 @@ function FavoriteContainer() {
 
   return (
     <div>
-      <Mui.Typography align="center" mb={5}><Mui.TextField id="filled-basic" label="Filter" variant="filled" value={filter} onChange={e => setFilter(e.target.value)}></Mui.TextField></Mui.Typography>
+      <Mui.Typography className="favoritelist-animate" align="center" mb={5}><Mui.TextField id="filled-basic" label="Filter" variant="standard" value={filter} onChange={e => setFilter(e.target.value)}></Mui.TextField></Mui.Typography>
         <Box sx={{ flexGrow: 1, borderRadius: 2, columngap: 2 }}>
       <Grid container justifyContent="center" rowGap={10} columnGap={10} spacing={2} >
       {filteredRecipes.map(recipe => {

@@ -110,3 +110,130 @@ code {
 .advanced-search-icon {
   color: grey;
 }
+
+.recipecard-header {
+  height: 100px;
+  width: 200px;
+  padding: 0 !important;
+}
+
+.reciperesults-animation {
+  opacity: 0;
+  animation: cardSlideIn 1.5s ease-out;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+@keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+.favoritelist-animation-1 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-2 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.1s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-3 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.2s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-4 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.3s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-5 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.4s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-6 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-7 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.6s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-8 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.7s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-9 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.8s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-10 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.9s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-11 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.favoritelist-animation-12 {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards;
+  position: relative;
+}
+
+.recipe-page {
+  text-align: center;
+  list-style-position: inside;
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-fill-mode: forwards;
+}

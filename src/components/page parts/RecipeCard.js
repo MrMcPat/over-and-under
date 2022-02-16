@@ -62,16 +62,16 @@ function RecipeCard({recipe, favRecipes}) {
   };
 
   return (
-    <div>
+    <div className="reciperesults-animation">
       <Card variant="outlined" sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
-      <CardActionArea>
-      <CardHeader
+      <CardActionArea >
+      <CardHeader className="recipecard-header"
         title={recipe.title}
       />
       <CardMedia
         component="img"
         height="194"
-        image={recipe.image}
+        image={recipe.image}s
         alt={recipe.title}
       />
       </CardActionArea>

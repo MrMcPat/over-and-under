@@ -44,11 +44,12 @@ function FavoriteCard({ recipe, onDelete }) {
   let extractedId = recipe.image.split('/recipeImages/')[1].split('-')[0]
 
   return (
-    <div>
+    <div className={`favoritelist-animation-${recipe.id}`}>
       <Card variant="outlined" sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
       <CardActionArea>
       <CardHeader
         title={recipe.title}
+        className="recipecard-header"
       />
       <CardMedia
         component="img"
@@ -61,9 +62,10 @@ function FavoriteCard({ recipe, onDelete }) {
         <IconButton aria-label="Delete">
           <DeleteOutlineOutlinedIcon onClick={handleClick}/>
         </IconButton>
+        <Link to={`/reciperesults/${extractedId}`}>
         <IconButton>
-        <Link to={`/reciperesults/${extractedId}`}><RestaurantOutlinedIcon /></Link>
-        </IconButton>
+        <RestaurantOutlinedIcon />
+        </IconButton></Link>
         <Typography variant="h6" style={{paddingLeft: "50px"}}>Nutrition</Typography>
         <ExpandMore
           expand={expanded}

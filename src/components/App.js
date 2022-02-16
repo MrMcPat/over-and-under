@@ -18,8 +18,8 @@ function App() {
 
   function handleLandingPage2 (state) {
     setLandingPage(false)
+    setNavbar(false)
   }
-  console.log(landingPage)
 
   useEffect(() => {
     sessionStorage.setItem("sessionStorageKey", landingPage)
@@ -30,16 +30,14 @@ function App() {
   }
 
   if(backgroundColor) {
-    document.body.classList.add("background-under")
-    document.body.classList.remove("background-over")
+    document.body.className = "background-under"
   } else if (!backgroundColor){
-    document.body.classList.add("background-over")
-    document.body.classList.remove("background-under")
+    document.body.className = "background-over"
   }
 
   return (
     <div>
-      <Logo navbar={navbar} landingPage={landingPage} onLandingPage2={handleLandingPage2}/>
+      <Logo navbar={navbar} landingPage={landingPage} onLandingPage={handleLandingPage} onLandingPage2={handleLandingPage2}/>
         <Route path="/">
           <Homepage landingPage={landingPage} onBackgroundColor={handleBackgroundColor} onLandingPage={handleLandingPage} onNavbar={handleNavBar}/>
         </Route>

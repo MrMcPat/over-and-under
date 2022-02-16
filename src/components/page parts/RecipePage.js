@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useParams } from "react-router-dom"
 import * as Mui from "@mui/material";
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 function RecipePage({favRecipes}) {
 const params = useParams()
@@ -8,14 +9,14 @@ const [recipeInfo, setRecipeInfo] = useState([])
 const [isClicked, setIsClicked] = useState(false)
 
 useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=32b53701d7d54122a094792d559f0252`)
+    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=ad6d7e06596a42319494ac3917c53649`)
     .then(resp => resp.json())
     .then(data => {setRecipeInfo(data)})
 }, [])
 
     if(recipeInfo.length == 0) {return null}
     const instructionsArray = recipeInfo.instructions.replace(/<\/?[^>]+(>|$)/g, "").replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|")
-  
+
     function handleClick() {
         setIsClicked(true)
         const clickedRecipes = favRecipes.find(favRecipe => {
@@ -45,22 +46,26 @@ useEffect(() => {
 }
     
     return (
-    <div>
-        <Mui.Button size="small" onClick={handleClick} disabled={isClicked}>Fav</Mui.Button>
+    <div className="recipe-page">
         <img src={recipeInfo.image}></img>
         <h1>{recipeInfo.title}</h1>
+        <Mui.Button size="small" onClick={handleClick} disabled={isClicked}><FavoriteIcon/></Mui.Button>
+        <hr/>
         <h2>Nutrition Facts</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="710" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=ad6d7e06596a42319494ac3917c53649`} height="710" width="1000"></iframe>
+        <hr/>
         <h2>Ingredients</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=32b53701d7d54122a094792d559f0252`} height="400" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=ad6d7e06596a42319494ac3917c53649`} height="400" width="1000"></iframe>
+        <hr/>
         <h2>Instructions</h2>
         <ol>
             {instructionsArray.map(step => {
                 return <li>{step}</li>
             })}
         </ol>
+        <hr/>
         <h2>Equipment</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="200" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=ad6d7e06596a42319494ac3917c53649`} height="200" width="1000"></iframe>
     </div>
   )
 }
