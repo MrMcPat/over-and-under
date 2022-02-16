@@ -59,6 +59,9 @@ function RecipeCard({recipe, favRecipes}) {
     }
   }
 
+  
+
+
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
