@@ -7,13 +7,15 @@ import FavoriteContainer from "./page parts/FavoriteContainer";
 import RecipePage from "./page parts/RecipePage";
 import HomepageRecipes from "./HomepageRecipes";
 import defaultRecipes from "../data/defaultrecipes";
+import Carousel from 'react-bootstrap/Carousel';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const APIKey1 = "ad6d7e06596a42319494ac3917c53649";
 const APIKey2 = "10f404130be14caf8274ea22151509b7";
 const APIKey3 = "32b53701d7d54122a094792d559f0252";
 const APIKey4 = "706bae3484f3466a81bd4afe4a6b402a";
 
-function Homepage() {
+function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
   const [recipes, setRecipes] = useState([])
   const [favRecipes, setFavRecipes] = useState([])
   const [search, setSearch] = useState("")
@@ -23,8 +25,8 @@ function Homepage() {
   const initRender = useRef(true)
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey1}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=2&apiKey=${APIKey1}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey2}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=2&apiKey=${APIKey2}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -64,31 +66,17 @@ function Homepage() {
 
   return (
     <div>
-      <main>
-        <Mui.Box
-          sx={{
-            bgcolor: "background.paper",
-            pt: 8,
-            pb: 6,
-          }}
-          
-        >
+        <Mui.Box sx={{bgcolor: "background.paper", pt: 8, pb: 6,}} style={{background: "transparent"}}>
           <Mui.Container maxWidth="sm">
-            <Mui.Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="text.primary"
-              gutterBottom
-            >
-              <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} onOverUnder={handleOverUnder}/>
+ 
+              
+            <Mui.Typography component="div" variant="h2" align="center" color="text.primary" gutterBottom>
+            <Mui.Typography className={landingPage ? "display-none" : ""}component="h2" variant="h2">OverAndUnder<br/>
+            <Mui.Button variant="outlined" onClick={onLandingPage}>Get Started</Mui.Button></Mui.Typography>
+              <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} onOverUnder={handleOverUnder} onBackgroundColor={onBackgroundColor} landingPage={landingPage} onLandingPage={onLandingPage} onNavbar={onNavbar}/>
+            <HomepageRecipes defaultRecipes={defaultRecipes} landingPage={landingPage}/>
             </Mui.Typography>
-            <Mui.Stack
-              sx={{ pt: 4 }}
-              direction="row"
-              spacing={2}
-              justifyContent="center"
-            ></Mui.Stack>
+            <Mui.Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center"></Mui.Stack>
           </Mui.Container>
 
           <Switch>
@@ -104,8 +92,7 @@ function Homepage() {
           </Switch>
         </Mui.Box>
 
-          {/* <HomepageRecipes defaultRecipes={defaultRecipes}/> */}
-      </main>
+
     </div>
   );
 }

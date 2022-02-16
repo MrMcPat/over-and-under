@@ -20,29 +20,45 @@ code {
   color: white !important;
   text-decoration: none;
   padding: 20px;
+  animation: fadeIn 1s ease;
 }
 
-#form-container {
-
-  margin: auto;
-}
-
-/* .search-form {
-  position: relative;
-  top: 200px;
-}
-
-.search-form-animate {
-  position: relative;
-  animation: slideUp ease 1s;
-  animation-fill-mode: forwards;
-}
-
-@keyframes slideUp{
+@keyframes fadeIn {
   0% {
-    top: 200px;
+    opacity: 0;
   }
   100% {
-    top: 0px;
+    opacity: 1;
   }
-} */
+}
+
+.navlink-hidden {
+  color: white !important;
+  text-decoration: none;
+  padding: 20px;
+  display: none;
+}
+
+.carousel {
+  position: relative;
+  width: 550px;
+  top: 0px;
+}
+
+.display-none{
+  display: none;
+}
+
+.background-over {
+  background: lavender !important;
+  transition: all 1s;
+}
+
+.background-under {
+  background: pink !important;
+  transition: all 1s;
+}
+
+.advanced-search-icon {
+  color: grey;
+}

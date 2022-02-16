@@ -1,40 +1,28 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
 import * as Mui from "@mui/material";
+import Carousel from "react-bootstrap/Carousel";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function HomepageRecipes({defaultRecipes}) {
+function HomepageRecipes({ defaultRecipes, landingPage}) {
+
+  const recipeCarousel = defaultRecipes.map(recipe => {
+    return <Carousel.Item key={recipe.recipeId}>
+      <img className="d-block w-100" src={recipe.image} alt={recipe.title}/>
+      <Carousel.Caption>
+        <h3>{recipe.title}</h3>
+        <Link style={{textDecoration: "none"}} to={`/reciperesults/${recipe.recipeId}`}><Mui.Button style={{color: "white"}} size="small">View</Mui.Button></Link>
+      </Carousel.Caption>
+    </Carousel.Item>
+  })
 
   return (
-    <Mui.Container sx={{ py: 8 }} maxWidth="md">
-    <Mui.Grid container spacing={4}>
-      {defaultRecipes.map(recipe => (
-        <Mui.Grid item key={recipe.recipeId} xs={12} sm={6} md={4}>
-          <Mui.Card
-            sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
-          >
-            <Mui.CardMedia
-              component="img"
-              sx={{
-                // 16:9
-                pt: '56.25%',
-              }}
-              image={recipe.image}
-              alt={recipe.title}
-            />
-            <Mui.CardContent sx={{ flexGrow: 1 }}>
-              <Mui.Typography gutterBottom variant="h5" component="h2">
-                {recipe.title}
-              </Mui.Typography>
-            </Mui.CardContent>
-            <Mui.CardActions>
-                <Link to={`/reciperesults/${recipe.recipeId}`}><Mui.Button size="small">View</Mui.Button></Link>
-            </Mui.CardActions>
-          </Mui.Card>
-        </Mui.Grid>
-      ))}
-    </Mui.Grid>
-  </Mui.Container>
-  )
+    <div>
+      <Carousel className={landingPage ? "carousel display-none" : "carousel"}>
+        {recipeCarousel}
+      </Carousel>
+    </div>
+  );
 }
 
-export default HomepageRecipes
+export default HomepageRecipes;

@@ -1,9 +1,8 @@
 import React from 'react'
 import {NavLink} from "react-router-dom"
 import * as Mui from "@mui/material";
-import DinnerDiningIcon from '@mui/icons-material/DinnerDining';
 
-function Logo() {
+function Logo({navbar}) {
   return (
     <div>
     <Mui.Box sx={{ flexGrow: 1 }}>
@@ -13,16 +12,14 @@ function Logo() {
         <NavLink id="app-logo" className="navlink" to="/">OverAndUnder</NavLink>
         </Mui.Typography>
         <Mui.Typography variant="h5">
-        <NavLink className="navlink" to="/reciperesults">See Recipe Results</NavLink>
+        <NavLink className={navbar ? "navlink" : "navlink-hidden"} to="/reciperesults">See Recipe Results</NavLink>
         </Mui.Typography>
         <Mui.Typography variant="h5">
-        <NavLink className="navlink" to="/favoriterecipes">Favorite Recipes</NavLink>
+        <NavLink className={navbar ? "navlink" : "navlink-hidden"} to="/favoriterecipes">Favorite Recipes</NavLink>
         </Mui.Typography>
       </Mui.Toolbar>
     </Mui.AppBar>
     </Mui.Box>
-    
-
     </div>
 
   )

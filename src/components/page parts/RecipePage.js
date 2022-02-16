@@ -8,12 +8,10 @@ const [recipeInfo, setRecipeInfo] = useState([])
 const [isClicked, setIsClicked] = useState(false)
 
 useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=ad6d7e06596a42319494ac3917c53649`)
+    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=10f404130be14caf8274ea22151509b7`)
     .then(resp => resp.json())
     .then(data => {setRecipeInfo(data)})
 }, [])
-
-    console.log(recipeInfo)
 
     if(recipeInfo.length == 0) {return null}
     const instructionsArray = recipeInfo.instructions.replace(/<\/?[^>]+(>|$)/g, "").replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|")
@@ -46,9 +44,9 @@ useEffect(() => {
         <img src={recipeInfo.image}></img>
         <h1>{recipeInfo.title}</h1>
         <h2>Nutrition Facts</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=ad6d7e06596a42319494ac3917c53649`} height="710" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=10f404130be14caf8274ea22151509b7`} height="710" width="1000"></iframe>
         <h2>Ingredients</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=ad6d7e06596a42319494ac3917c53649`} height="400" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=10f404130be14caf8274ea22151509b7`} height="400" width="1000"></iframe>
         <h2>Instructions</h2>
         <ol>
             {instructionsArray.map(step => {
@@ -56,7 +54,7 @@ useEffect(() => {
             })}
         </ol>
         <h2>Equipment</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=ad6d7e06596a42319494ac3917c53649`} height="200" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=10f404130be14caf8274ea22151509b7`} height="200" width="1000"></iframe>
     </div>
   )
 }
