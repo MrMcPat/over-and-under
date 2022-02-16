@@ -25,8 +25,8 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
   const initRender = useRef(true)
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey2}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=2&apiKey=${APIKey2}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=2&apiKey=${APIKey3}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey3}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)

@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react";
 import RecipeCard from "./RecipeCard";
-import * as Mui from "@mui/material";
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
 
 function RecipeContainer({ recipes }) {
   const[favRecipes, setFavRecipes] = useState([])
@@ -17,11 +18,12 @@ function RecipeContainer({ recipes }) {
 
   return (
     <div>
-      <Mui.Container sx={{ py: 8 }} maxWidth="md">
-        <Mui.Grid container spacing={1}>
-          {recipeCard}
-        </Mui.Grid>
-      </Mui.Container>
+    <Box sx={{ flexGrow: 1, borderRadius: 2, columngap: 2 }}>
+      <Grid container justifyContent="center" rowGap={10} columnGap={10} spacing={2} >
+        {recipeCard}
+      </Grid>
+    </Box>
+          
     </div>
   );
 }
