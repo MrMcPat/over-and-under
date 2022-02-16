@@ -8,7 +8,7 @@ const [recipeInfo, setRecipeInfo] = useState([])
 const [isClicked, setIsClicked] = useState(false)
 
 useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=10f404130be14caf8274ea22151509b7`)
+    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=32b53701d7d54122a094792d559f0252`)
     .then(resp => resp.json())
     .then(data => {setRecipeInfo(data)})
 }, [])
@@ -31,6 +31,12 @@ useEffect(() => {
               body: JSON.stringify({
                 title: recipeInfo.title,
                 image: recipeInfo.image,
+                calorie: recipeInfo.nutrition.nutrients[0].name,
+                protein: recipeInfo.nutrition.nutrients[1].name,
+                carb: recipeInfo.nutrition.nutrients[2].name,
+                calorieAmount: recipeInfo.nutrition.nutrients[0].amount,
+                proteinAmount: recipeInfo.nutrition.nutrients[1].amount,
+                carbAmount: recipeInfo.nutrition.nutrients[2].amount,
               })
             })
             .then(resp => resp.json())
@@ -44,9 +50,9 @@ useEffect(() => {
         <img src={recipeInfo.image}></img>
         <h1>{recipeInfo.title}</h1>
         <h2>Nutrition Facts</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=10f404130be14caf8274ea22151509b7`} height="710" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="710" width="1000"></iframe>
         <h2>Ingredients</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=10f404130be14caf8274ea22151509b7`} height="400" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=32b53701d7d54122a094792d559f0252`} height="400" width="1000"></iframe>
         <h2>Instructions</h2>
         <ol>
             {instructionsArray.map(step => {
@@ -54,7 +60,7 @@ useEffect(() => {
             })}
         </ol>
         <h2>Equipment</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=10f404130be14caf8274ea22151509b7`} height="200" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="200" width="1000"></iframe>
     </div>
   )
 }

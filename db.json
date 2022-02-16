@@ -1,34 +1,48 @@
 {
   "recipes": [
     {
+      "title": "Japanese Sushi",
+      "image": "https://spoonacular.com/recipeImages/648506-556x370.jpg",
+      "calorie": "Calories",
+      "protein": "Fat",
+      "carb": "Saturated Fat",
+      "calorieAmount": 564.05,
+      "proteinAmount": 12.77,
+      "carbAmount": 2.1,
+      "id": 1
+    },
+    {
       "title": "Rice Pudding",
       "image": "https://spoonacular.com/recipeImages/658276-312x231.jpg",
+      "calorie": "Calories",
+      "protein": "Protein",
+      "carb": "Carbohydrates",
+      "calorieAmount": 407.409,
+      "proteinAmount": 11.5326,
+      "carbAmount": 66.695,
       "id": 2
     },
     {
-      "title": "Rice Pilaf",
-      "image": "https://spoonacular.com/recipeImages/658277-312x231.jpg",
+      "title": "Autumn Cheesecake",
+      "image": "https://spoonacular.com/recipeImages/633091-556x370.jpg",
+      "calorie": "Calories",
+      "protein": "Fat",
+      "carb": "Saturated Fat",
+      "calorieAmount": 357.78,
+      "proteinAmount": 18.86,
+      "carbAmount": 9.42,
       "id": 3
     },
     {
-      "title": "Salad With Apples, Gorgonzola and Walnuts",
-      "image": "https://spoonacular.com/recipeImages/659015-312x231.jpg",
+      "title": "Thai Fish Cakes",
+      "image": "https://spoonacular.com/recipeImages/663108-556x370.jpg",
+      "calorie": "Calories",
+      "protein": "Fat",
+      "carb": "Saturated Fat",
+      "calorieAmount": 391.05,
+      "proteinAmount": 20.36,
+      "carbAmount": 3.16,
       "id": 4
-    },
-    {
-      "title": "Egg Salad Wrap",
-      "image": "https://spoonacular.com/recipeImages/1096010-312x231.jpg",
-      "id": 5
-    },
-    {
-      "title": "Beans Hawaiian",
-      "image": "https://spoonacular.com/recipeImages/634545-312x231.jpg",
-      "id": 6
-    },
-    {
-      "title": "Beans With Smoked Pork Hock",
-      "image": "https://spoonacular.com/recipeImages/634548-312x231.jpg",
-      "id": 7
     }
   ]
 }

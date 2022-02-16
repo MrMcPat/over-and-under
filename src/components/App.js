@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Route } from "react-router-dom";
 import Logo from "./Logo"
 import Homepage from "./Homepage";
 
 function App() {
   const [backgroundColor, setBackgroundColor] = useState(false)
-  const [landingPage, setLandingPage] = useState(false)
+  const [landingPage, setLandingPage] = useState(sessionStorage.getItem("sessionStorageKey") || false)
   const [navbar, setNavbar] = useState(false)
 
   function handleBackgroundColor () {
@@ -15,7 +15,15 @@ function App() {
   function handleLandingPage () {
     setLandingPage(true)
   }
+
+  function handleLandingPage2 (state) {
+    setLandingPage(false)
+  }
   console.log(landingPage)
+
+  useEffect(() => {
+    sessionStorage.setItem("sessionStorageKey", landingPage)
+  }, [landingPage])
 
   function handleNavBar () {
     setNavbar(true)
@@ -31,7 +39,7 @@ function App() {
 
   return (
     <div>
-      <Logo navbar={navbar} />
+      <Logo navbar={navbar} landingPage={landingPage} onLandingPage2={handleLandingPage2}/>
         <Route path="/">
           <Homepage landingPage={landingPage} onBackgroundColor={handleBackgroundColor} onLandingPage={handleLandingPage} onNavbar={handleNavBar}/>
         </Route>
