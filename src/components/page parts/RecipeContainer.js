@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import RecipeCard from "./RecipeCard";
-import * as Mui from "@mui/material";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
@@ -24,6 +23,7 @@ function RecipeContainer({ recipes }) {
         {recipeCard}
       </Grid>
     </Box>
+          
     </div>
   );
 }
