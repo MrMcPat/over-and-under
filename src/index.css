@@ -5,6 +5,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 code {
@@ -48,6 +58,7 @@ code {
 .display-none{
   animation: fadeOut 1s ease;
   animation-fill-mode: forwards;
+  display: none;
 }
 
 @keyframes fadeOut {
@@ -56,12 +67,14 @@ code {
   }
   100% {
     opacity: 0;
+    display: none;
   }
 }
 
 .carousel-display-none {
   animation: fadeCarouselOut 1s ease;
   animation-fill-mode: forwards;
+  display: none;
 }
 
 @keyframes fadeCarouselOut {
@@ -81,17 +94,7 @@ code {
 .display-search {
   opacity: 0;
   animation: fadeIn 1s ease;
-  animation-delay: 1s;
   animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
 
 .background-over {

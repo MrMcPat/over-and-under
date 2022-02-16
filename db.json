@@ -19,6 +19,16 @@
       "title": "Egg Salad Wrap",
       "image": "https://spoonacular.com/recipeImages/1096010-312x231.jpg",
       "id": 5
+    },
+    {
+      "title": "Beans Hawaiian",
+      "image": "https://spoonacular.com/recipeImages/634545-312x231.jpg",
+      "id": 6
+    },
+    {
+      "title": "Beans With Smoked Pork Hock",
+      "image": "https://spoonacular.com/recipeImages/634548-312x231.jpg",
+      "id": 7
     }
   ]
 }
