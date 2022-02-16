@@ -22,7 +22,7 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOve
  
 
   return (
-    <div style={{display: landingPage ? "" : "none"}}>
+    <div className={landingPage ? "display-search" : "display-none-search"} style={{display: landingPage ? "" : "none"}}>
       <form id="form-container" autoComplete="off" onSubmit={handleSubmit}>
         <Mui.Typography variant="h6">So do you want to go Over or Under?</Mui.Typography>
         <Mui.TextField id="filled-basic" label="Search" variant="standard" value={search}  onChange={e => setSearch(e.target.value)}/>

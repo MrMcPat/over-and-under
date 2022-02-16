@@ -46,7 +46,52 @@ code {
 }
 
 .display-none{
+  animation: fadeOut 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.carousel-display-none {
+  animation: fadeCarouselOut 1s ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeCarouselOut {
+  0% {
+    opacity: 1;
+    top: -100px;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.display-none-search {
   display: none;
+}
+
+.display-search {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 .background-over {

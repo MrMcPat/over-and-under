@@ -18,7 +18,7 @@ function HomepageRecipes({ defaultRecipes, landingPage}) {
 
   return (
     <div>
-      <Carousel className={landingPage ? "carousel display-none" : "carousel"}>
+      <Carousel className={landingPage ? "carousel carousel-display-none" : "carousel"}>
         {recipeCarousel}
       </Carousel>
     </div>
