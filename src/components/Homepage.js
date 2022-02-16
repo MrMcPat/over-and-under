@@ -21,10 +21,13 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
   const [toggleSearch, setToggleSearch] = useState(false)
   const [toggleOverUnder, setToggleOverUnder] = useState(false)
   const initRender = useRef(true)
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey3}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey3}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey4}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey4}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -32,6 +35,7 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
 
   function handleAdvSearch (newSearch) {
     setAdvSearch(newSearch)
+    setOpen(false)
   }
 
   function handleToggleSearch() {
@@ -71,7 +75,7 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
             <Mui.Typography component="div" variant="h2" align="center" color="text.primary" gutterBottom>
             <Mui.Typography className={landingPage ? "display-none" : ""}component="h2" variant="h2">OverAndUnder<br/>
             <Mui.Button variant="outlined" onClick={onLandingPage}>Get Started</Mui.Button></Mui.Typography>
-            <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} onOverUnder={handleOverUnder} onBackgroundColor={onBackgroundColor} landingPage={landingPage} onLandingPage={onLandingPage} onNavbar={onNavbar}/>
+            <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} onOverUnder={handleOverUnder} onBackgroundColor={onBackgroundColor} landingPage={landingPage} onLandingPage={onLandingPage} onNavbar={onNavbar} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose}/>
             <HomepageRecipes defaultRecipes={defaultRecipes} landingPage={landingPage} onLandingPage={onLandingPage}/>
             </Mui.Typography>
             <Mui.Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center"></Mui.Stack>

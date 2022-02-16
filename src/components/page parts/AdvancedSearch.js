@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { NavLink, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as Mui from '@mui/material';
 
-function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder, onBackgroundColor}) {
+function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder, onBackgroundColor, onClose}) {
   const [toggleOverUnder, setToggleOverUnder] = useState(sessionStorage.getItem("sessionStorageKey") || false)
   const [mealType, setMealType] = useState("")
   const [cuisine, setCuisine] = useState("")
@@ -55,7 +55,6 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder, on
   
   return (
     <div>
-      <NavLink to="/"><Mui.Button>Back</Mui.Button></NavLink>
       <Mui.Typography variant="h6">{toggleOverUnder ? "Under" : "Over"}</Mui.Typography>
       <form onSubmit={handleSubmit}>
         <select value={mealType} onChange={e => setMealType(e.target.value)}>
@@ -130,7 +129,7 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder, on
         </select>
         <Mui.TextField label="Include Ingredients" variant="standard" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
         <br/>
-        <Mui.Typography variant="h6" component="label">{toggleOverUnder ? "Max Carbs" : "Min Carbs"}</Mui.Typography>
+        <Mui.Typography variant="h6" component="label">{toggleOverUnder ? "Max Carbohydrates" : "Min Carbs"}</Mui.Typography>
         <input type="number" min={toggleOverUnder ? "0" : "20"} max={toggleOverUnder ? "40" : "99999"} value={carbs} onChange={e => setCarbs(e.target.value)}></input>
         <br/>
         <Mui.Typography variant="h6" component="label">{toggleOverUnder ? "Max Protein" : "Min Protein"}</Mui.Typography>
@@ -141,6 +140,7 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onOverUnder, on
         <Mui.Button type="submit" variant="outlined" onClick={onToggleAdvSearch}>Search</Mui.Button>
         <Mui.Switch defaultChecked color="warning" onClick={handleOverUnder}/>
       </form>
+      <Mui.Button onClick={onClose}>Back</Mui.Button>
 
     </div>
   )
