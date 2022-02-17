@@ -17,7 +17,7 @@ function HomepageRecipes({ defaultRecipes, landingPage, onLandingPage}) {
   })
 
   return (
-    <div>
+    <div style={{boxShadow: "8px 8px 1px #876445"}}>
       <Carousel className={landingPage ? "carousel carousel-display-none" : "carousel"}>
         {recipeCarousel}
       </Carousel>

@@ -45,7 +45,7 @@ function FavoriteCard({ recipe, toggleSwitch, onDelete }) {
   let extractedId = recipe.image.split('/recipeImages/')[1].split('-')[0]
 
   return (
-    <div className={`favoritelist favoritelist-animation-${recipe.id}`}>
+    <div style={{boxShadow: "8px 8px 1px #876445"}} className={`favoritelist favoritelist-animation-${recipe.id}`}>
       <Card variant="outlined" style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}} sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
       <Tooltip title="View recipe"><Link className="recipecard-link" to={`/reciperesults/${extractedId}`}><CardActionArea>
       <CardHeader
@@ -61,7 +61,7 @@ function FavoriteCard({ recipe, toggleSwitch, onDelete }) {
       </CardActionArea></Link></Tooltip>
       <CardActions disableSpacing>
         <Tooltip title="Delete from favorites"><IconButton aria-label="Delete">
-          <DeleteOutlineOutlinedIcon onClick={handleClick}/>
+          <DeleteOutlineOutlinedIcon style={{color: "grey"}}onClick={handleClick}/>
         </IconButton></Tooltip>
         <Typography variant="h6" style={{paddingLeft: "60px"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
         <ExpandMore

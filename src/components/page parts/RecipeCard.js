@@ -63,7 +63,7 @@ function RecipeCard({recipe, favRecipes, toggleSwitch}) {
   };
 
   return (
-    <div className="reciperesults-animation">
+    <div style={{boxShadow: "8px 8px 1px #876445"}} className="reciperesults-animation">
       <Card className="recipe-card" variant="outlined" style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}} sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
       <Tooltip title="View recipe"><Link className="recipecard-link"to={`/reciperesults/${recipe.id}`}><CardActionArea>
       <CardHeader className="recipecard-header"
@@ -78,7 +78,7 @@ function RecipeCard({recipe, favRecipes, toggleSwitch}) {
       </CardActionArea></Link></Tooltip>
       <CardActions disableSpacing>
         <Tooltip title="Add to favorites"><IconButton aria-label="add to favorites" disabled={isClicked}>
-          <FavoriteIcon onClick={handleClick} />
+          <FavoriteIcon style={{color: "#FF6363"}} onClick={handleClick} />
         </IconButton></Tooltip>
         <Typography variant="h6" style={{paddingLeft: "60px"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
         <ExpandMore

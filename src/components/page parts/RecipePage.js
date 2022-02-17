@@ -49,7 +49,7 @@ useEffect(() => {
     <div className="recipe-page">
         <img src={recipeInfo.image}></img>
         <h1>{recipeInfo.title}</h1>
-        <Mui.Tooltip title="Add to favorites"><Mui.Button size="small" onClick={handleClick} disabled={isClicked}><FavoriteIcon/></Mui.Button></Mui.Tooltip>
+        <Mui.Tooltip title="Add to favorites"><Mui.Button size="small" onClick={handleClick} disabled={isClicked}><FavoriteIcon style={{color: "#FF6363"}}/></Mui.Button></Mui.Tooltip>
         <hr/>
         <h2>Nutrition Facts</h2>
         <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`} height="710" width="1000"></iframe>
