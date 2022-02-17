@@ -14,9 +14,6 @@ useEffect(() => {
     .then(data => {setRecipeInfo(data)})
 }, [])
 
-console.log(recipeInfo.title)
-console.log(favRecipes)
-
     if(recipeInfo.length == 0) {return null}
     const instructionsArray = recipeInfo.instructions.replace(/<\/?[^>]+(>|$)/g, "").replace(/([.?!])\s*(?=[A-Z])/g, "$1|").split("|")
 
