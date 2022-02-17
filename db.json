@@ -285,6 +285,28 @@
       "proteinAmount": 20.72,
       "carbAmount": 9.79,
       "id": 26
+    },
+    {
+      "title": "Pasta With Tuna",
+      "image": "https://spoonacular.com/recipeImages/654959-312x231.jpg",
+      "calorie": "Calories",
+      "protein": "Protein",
+      "carb": "Carbohydrates",
+      "calorieAmount": 420.823,
+      "proteinAmount": 24.4751,
+      "carbAmount": 57.6915,
+      "id": 27
+    },
+    {
+      "title": "Risotto With Fresh Peas",
+      "image": "https://spoonacular.com/recipeImages/658384-556x370.jpg",
+      "calorie": "Calories",
+      "protein": "Fat",
+      "carb": "Saturated Fat",
+      "calorieAmount": 506.25,
+      "proteinAmount": 19.44,
+      "carbAmount": 8.46,
+      "id": 28
     }
   ]
 }

@@ -63,11 +63,12 @@ function RecipeCard({recipe, favRecipes, toggleSwitch}) {
   };
 
   return (
-    <div style={{boxShadow: "8px 8px 1px #876445"}} className="reciperesults-animation">
+    <div className="reciperesults-animation">
       <Card className="recipe-card" variant="outlined" style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}} sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
       <Tooltip title="View recipe"><Link className="recipecard-link"to={`/reciperesults/${recipe.id}`}><CardActionArea>
       <CardHeader className="recipecard-header"
         title={recipe.title}
+        style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}
       />
       <CardMedia
         component="img"
@@ -80,18 +81,18 @@ function RecipeCard({recipe, favRecipes, toggleSwitch}) {
         <Tooltip title="Add to favorites"><IconButton aria-label="add to favorites" disabled={isClicked}>
           <FavoriteIcon style={{color: "#FF6363"}} onClick={handleClick} />
         </IconButton></Tooltip>
-        <Typography variant="h6" style={{paddingLeft: "60px"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
+        <Typography variant="h6" style={{paddingLeft: "60px", color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          <ExpandMoreIcon style={{color: toggleSwitch ? "#632626" : "#A90409"}} />
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContent style={{color: toggleSwitch ? "#632626" : "#A90409"}}>
           <Typography paragraph>
             <li>{recipe.nutrition.nutrients[0].name} : {recipe.nutrition.nutrients[0].amount} kcal</li>
             <li>{recipe.nutrition.nutrients[1].name} : {recipe.nutrition.nutrients[1].amount} g</li>

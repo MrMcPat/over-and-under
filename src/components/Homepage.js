@@ -28,8 +28,8 @@ function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
   const handleClose = () => setOpen(false);
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleSwitch ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleSwitch ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleSwitch ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey4}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey4}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleSwitch ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleSwitch ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleSwitch ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey3}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey3}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -72,7 +72,7 @@ function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
             <Mui.Typography className={landingPage ? "display-none" : ""}component="h2" variant="h2"><img src={toggleSwitch ? appLogoUnder : appLogoOver} style={{height: "120px", width: "300px"}}></img><br/>
             <Mui.Button style={{fontSize: "20px" , color: toggleSwitch ? "#9c563c" : "#A90409"}} onClick={onLandingPage}><DinnerDiningOutlinedIcon />Get Started</Mui.Button></Mui.Typography>
             <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} landingPage={landingPage} onLandingPage={onLandingPage} onNavbar={onNavbar} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} toggleSwitch={toggleSwitch}/>
-            <HomepageRecipes defaultRecipes={defaultRecipes} landingPage={landingPage} onLandingPage={onLandingPage}/>
+            <HomepageRecipes defaultRecipes={defaultRecipes} toggleSwitch={toggleSwitch} landingPage={landingPage} onLandingPage={onLandingPage}/>
             </Mui.Typography>
             <Mui.Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center"></Mui.Stack>
           </Mui.Container>
@@ -85,7 +85,7 @@ function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
               <RecipeContainer recipes={recipes} toggleSwitch={toggleSwitch}/>
             </Route>
             <Route path="/reciperesults/:id">
-              <RecipePage favRecipes={favRecipes}/>
+              <RecipePage favRecipes={favRecipes} toggleSwitch={toggleSwitch}/>
             </Route>
           </Switch>
         </Mui.Box>

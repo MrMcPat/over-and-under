@@ -45,12 +45,13 @@ function FavoriteCard({ recipe, toggleSwitch, onDelete }) {
   let extractedId = recipe.image.split('/recipeImages/')[1].split('-')[0]
 
   return (
-    <div style={{boxShadow: "8px 8px 1px #876445"}} className={`favoritelist favoritelist-animation-${recipe.id}`}>
+    <div className={`favoritelist favoritelist-animation-${recipe.id}`}>
       <Card variant="outlined" style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}} sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
       <Tooltip title="View recipe"><Link className="recipecard-link" to={`/reciperesults/${extractedId}`}><CardActionArea>
       <CardHeader
         title={recipe.title}
         className="recipecard-header"
+        style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}
       />
       <CardMedia
         component="img"
@@ -63,7 +64,7 @@ function FavoriteCard({ recipe, toggleSwitch, onDelete }) {
         <Tooltip title="Delete from favorites"><IconButton aria-label="Delete">
           <DeleteOutlineOutlinedIcon style={{color: "grey"}}onClick={handleClick}/>
         </IconButton></Tooltip>
-        <Typography variant="h6" style={{paddingLeft: "60px"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
+        <Typography variant="h6" style={{paddingLeft: "60px", color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}
@@ -74,7 +75,7 @@ function FavoriteCard({ recipe, toggleSwitch, onDelete }) {
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
+        <CardContent style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}>
           <Typography paragraph>
             <li>{recipe.calorie} : {recipe.calorieAmount} kcal</li>
             <li>{recipe.protein} : {recipe.proteinAmount} g</li>
