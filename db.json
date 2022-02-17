@@ -252,6 +252,17 @@
       "proteinAmount": 6.26,
       "carbAmount": 3.51,
       "id": 23
+    },
+    {
+      "title": "Rice with Fried Egg and Sausage",
+      "image": "https://spoonacular.com/recipeImages/658290-312x231.jpg",
+      "calorie": "Calories",
+      "protein": "Protein",
+      "carb": "Carbohydrates",
+      "calorieAmount": 739.255,
+      "proteinAmount": 34.0855,
+      "carbAmount": 75.1899,
+      "id": 24
     }
   ]
 }

@@ -22,7 +22,7 @@ const style = {
 };
 
 
-function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOverUnder, onBackgroundColor, landingPage, onNavbar, open, setOpen, handleClose, handleOpen}) {
+function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, landingPage, onNavbar, open, setOpen, handleClose, handleOpen, toggleSwitch}) {
   const [search, setSearch] = useState("")
   const history = useHistory()
 
@@ -35,15 +35,13 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOve
     })
   }
 
-  
-
   return (
-    <div className={landingPage ? "display-search" : "display-none-search"} style={{display: landingPage ? "" : "none"}}>
+    <div className={landingPage ? "display-search" : "display-none-search"} style={{paddingTop: "60px"}}>
       <Mui.Typography align="center">
-      <form id="form-container" autoComplete="off" onSubmit={handleSubmit}>
-        <Mui.Typography variant="h6">So do you want to go Over or Under?</Mui.Typography>
+      <form id="form-container" onSubmit={handleSubmit}>
+        <Mui.Typography variant="h6">Search for recipes ( ˘▽˘)っ♨</Mui.Typography>
         <Mui.TextField id="filled-basic" label="Search" variant="standard" value={search}  onChange={e => setSearch(e.target.value)}/>
-        <SettingsIcon onClick={handleOpen}/>
+        <Mui.Tooltip title="Advanced search"><SettingsIcon onClick={handleOpen}/></Mui.Tooltip>
         <Mui.Fab type="submit" color="primary" onClick={onToggleSearch} size="small">
           <SearchIcon />
         </Mui.Fab>
@@ -53,9 +51,9 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, onOve
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
       >
-        <Box sx={style}>
+        <Box sx={style} style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}}>
           <Typography id="modal-modal-title" variant="h6" component="h2">Advanced Search</Typography>
-          <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onToggleAdvSearch={onToggleAdvSearch} onOverUnder={onOverUnder} onBackgroundColor={onBackgroundColor} onClose={handleClose} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose}/>
+          <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onToggleAdvSearch={onToggleAdvSearch} onClose={handleClose} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} toggleSwitch={toggleSwitch}/>
         </Box>
       </Modal>
       </Mui.Typography>        

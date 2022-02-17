@@ -22,9 +22,32 @@ code {
     monospace;
 }
 
-#app-logo {
-  font-weight: bold;
+/* .logo-spin-over {
+  opacity: 0;
+  animation: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
+
+.logo-spin-under {
+  opacity: 0;
+  animation: spin;
+  animation-duration: 500ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+} */
+
+/* @keyframes spin {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg)
+  }
+  100% {
+    opacity: 100;
+    transform: rotate(360deg)
+  }
+} */
 
 .navlink {
   color: white !important;
@@ -46,7 +69,11 @@ code {
   color: white !important;
   text-decoration: none;
   padding: 20px;
-  display: none;
+  visibility: hidden;
+}
+
+.homepage {
+  padding-top: 20px !important;
 }
 
 .carousel {
@@ -98,12 +125,12 @@ code {
 }
 
 .background-over {
-  background: lavender !important;
+  background: #EBD489 !important;
   transition: all 1s;
 }
 
 .background-under {
-  background: pink !important;
+  background: #9ed870 !important;
   transition: all 1s;
 }
 
@@ -111,10 +138,16 @@ code {
   color: grey;
 }
 
+.recipecard-link {
+  text-decoration: none;
+  color: black;
+}
+
 .recipecard-header {
   height: 100px;
   width: 200px;
   padding: 0 !important;
+  text-decoration: none;
 }
 
 .reciperesults-animation {
@@ -122,6 +155,11 @@ code {
   animation: cardSlideIn 1.5s ease-out;
   animation-fill-mode: forwards;
   position: relative;
+  transition: transform 0.2s;
+}
+
+.reciperesults-animation:hover {
+  transform: scale(1.05)
 }
 
 @keyframes cardSlideIn {
@@ -133,6 +171,14 @@ code {
     opacity: 1;
     top: 0px;
   }
+}
+
+.favoritelist {
+  transition: transform 0.2s;
+}
+
+.favoritelist:hover {
+  transform: scale(1.05)
 }
 
 .favoritelist-animation-1 {

@@ -7,27 +7,28 @@ import FavoriteContainer from "./page parts/FavoriteContainer";
 import RecipePage from "./page parts/RecipePage";
 import HomepageRecipes from "./HomepageRecipes";
 import defaultRecipes from "../data/defaultrecipes";
-import appLogo from "../assets/over-and-under-dark.png"
+import DinnerDiningOutlinedIcon from '@mui/icons-material/DinnerDiningOutlined';
+import appLogoOver from "../assets/over-and-under-over.png"
+import appLogoUnder from "../assets/over-and-under-under.png"
 
 const APIKey1 = "ad6d7e06596a42319494ac3917c53649";
 const APIKey2 = "10f404130be14caf8274ea22151509b7";
 const APIKey3 = "32b53701d7d54122a094792d559f0252";
 const APIKey4 = "706bae3484f3466a81bd4afe4a6b402a";
 
-function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
+function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
   const [recipes, setRecipes] = useState([])
   const [favRecipes, setFavRecipes] = useState([])
   const [search, setSearch] = useState("")
   const [advSearch, setAdvSearch] = useState({})
   const [toggleSearch, setToggleSearch] = useState(false)
-  const [toggleOverUnder, setToggleOverUnder] = useState(false)
   const initRender = useRef(true)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleOverUnder ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleOverUnder ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleOverUnder ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey4}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleSwitch ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleSwitch ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleSwitch ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey4}`
   :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey4}`
 
   function handleSearch (newSearch) {
@@ -45,10 +46,6 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
   
   function handleToggleAdvSearch() {
     setToggleSearch(true)
-  }
-
-  function handleOverUnder (toggle) {
-    setToggleOverUnder(toggle => !toggle)
   }
 
   useEffect(() => {
@@ -69,12 +66,12 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
 
   return (
     <div>
-        <Mui.Box sx={{bgcolor: "background.paper", pt: 8, pb: 6,}} style={{background: "transparent"}}>
+        <Mui.Box className="homepage" sx={{bgcolor: "background.paper", pt: 8, pb: 6,}} style={{background: "transparent"}}>
           <Mui.Container maxWidth="sm">
             <Mui.Typography component="div" variant="h2" align="center" color="text.primary" gutterBottom>
-            <Mui.Typography className={landingPage ? "display-none" : ""}component="h2" variant="h2">OverAndUnder<br/>
-            <Mui.Button variant="outlined" onClick={onLandingPage}>Get Started</Mui.Button></Mui.Typography>
-            <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} onOverUnder={handleOverUnder} onBackgroundColor={onBackgroundColor} landingPage={landingPage} onLandingPage={onLandingPage} onNavbar={onNavbar} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose}/>
+            <Mui.Typography className={landingPage ? "display-none" : ""}component="h2" variant="h2"><img src={toggleSwitch ? appLogoUnder : appLogoOver} style={{height: "120px", width: "300px"}}></img><br/>
+            <Mui.Button style={{fontSize: "20px" , color: toggleSwitch ? "#9c563c" : "#A90409"}} onClick={onLandingPage}><DinnerDiningOutlinedIcon />Get Started</Mui.Button></Mui.Typography>
+            <Search onSearch={handleSearch} onAdvSearch={handleAdvSearch} onToggleSearch={handleToggleSearch} onToggleAdvSearch={handleToggleAdvSearch} landingPage={landingPage} onLandingPage={onLandingPage} onNavbar={onNavbar} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} toggleSwitch={toggleSwitch}/>
             <HomepageRecipes defaultRecipes={defaultRecipes} landingPage={landingPage} onLandingPage={onLandingPage}/>
             </Mui.Typography>
             <Mui.Stack sx={{ pt: 4 }} direction="row" spacing={2} justifyContent="center"></Mui.Stack>
@@ -82,10 +79,10 @@ function Homepage({onBackgroundColor, landingPage, onLandingPage, onNavbar}) {
 
           <Switch>
             <Route path="/favoriterecipes">
-              <FavoriteContainer />
+              <FavoriteContainer toggleSwitch={toggleSwitch}/>
             </Route>
             <Route exact path="/reciperesults">
-              <RecipeContainer recipes={recipes} />
+              <RecipeContainer recipes={recipes} toggleSwitch={toggleSwitch}/>
             </Route>
             <Route path="/reciperesults/:id">
               <RecipePage favRecipes={favRecipes}/>

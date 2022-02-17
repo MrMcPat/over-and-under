@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
+import Tooltip from '@mui/material/Tooltip';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-function FavoriteCard({ recipe, onDelete }) {
+function FavoriteCard({ recipe, toggleSwitch, onDelete }) {
   function handleClick() {
     console.log(recipe);
     fetch(`http://localhost:8000/recipes/${recipe.id}`, {
@@ -44,9 +45,9 @@ function FavoriteCard({ recipe, onDelete }) {
   let extractedId = recipe.image.split('/recipeImages/')[1].split('-')[0]
 
   return (
-    <div className={`favoritelist-animation-${recipe.id}`}>
-      <Card variant="outlined" sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
-      <CardActionArea>
+    <div className={`favoritelist favoritelist-animation-${recipe.id}`}>
+      <Card variant="outlined" style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}} sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
+      <Tooltip title="View recipe"><Link className="recipecard-link" to={`/reciperesults/${extractedId}`}><CardActionArea>
       <CardHeader
         title={recipe.title}
         className="recipecard-header"
@@ -57,16 +58,12 @@ function FavoriteCard({ recipe, onDelete }) {
         image={recipe.image}
         alt={recipe.title}
       />
-      </CardActionArea>
+      </CardActionArea></Link></Tooltip>
       <CardActions disableSpacing>
-        <IconButton aria-label="Delete">
+        <Tooltip title="Delete from favorites"><IconButton aria-label="Delete">
           <DeleteOutlineOutlinedIcon onClick={handleClick}/>
-        </IconButton>
-        <Link to={`/reciperesults/${extractedId}`}>
-        <IconButton>
-        <RestaurantOutlinedIcon />
-        </IconButton></Link>
-        <Typography variant="h6" style={{paddingLeft: "50px"}}>Nutrition</Typography>
+        </IconButton></Tooltip>
+        <Typography variant="h6" style={{paddingLeft: "60px"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

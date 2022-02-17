@@ -4,13 +4,9 @@ import Logo from "./Logo"
 import Homepage from "./Homepage";
 
 function App() {
-  const [backgroundColor, setBackgroundColor] = useState(false)
   const [landingPage, setLandingPage] = useState(sessionStorage.getItem("sessionStorageKey") || false)
   const [navbar, setNavbar] = useState(false)
-
-  function handleBackgroundColor () {
-    setBackgroundColor(backgroundColor => !backgroundColor)
-  }
+  const [toggleSwitch, setToggleSwitch] = useState(false)
 
   function handleLandingPage () {
     setLandingPage(true)
@@ -29,17 +25,21 @@ function App() {
     setNavbar(true)
   }
 
-  if(backgroundColor) {
+  function handleSwitch () {
+    setToggleSwitch(toggleSwitch => !toggleSwitch)
+  }
+
+  if(toggleSwitch) {
     document.body.className = "background-under"
-  } else if (!backgroundColor){
+  } else if (!toggleSwitch){
     document.body.className = "background-over"
   }
 
   return (
     <div>
-      <Logo navbar={navbar} landingPage={landingPage} onLandingPage={handleLandingPage} onLandingPage2={handleLandingPage2}/>
+      <Logo navbar={navbar} landingPage={landingPage} toggleSwitch={toggleSwitch} onLandingPage={handleLandingPage} onLandingPage2={handleLandingPage2} onSwitch={handleSwitch}/>
         <Route path="/">
-          <Homepage landingPage={landingPage} onBackgroundColor={handleBackgroundColor} onLandingPage={handleLandingPage} onNavbar={handleNavBar}/>
+          <Homepage landingPage={landingPage} toggleSwitch={toggleSwitch} onLandingPage={handleLandingPage} onNavbar={handleNavBar}/>
         </Route>
     </div>
   )

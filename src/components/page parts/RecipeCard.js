@@ -13,6 +13,7 @@ import Typography from '@mui/material/Typography';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import RestaurantOutlinedIcon from '@mui/icons-material/RestaurantOutlined';
+import Tooltip from '@mui/material/Tooltip';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -25,7 +26,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-function RecipeCard({recipe, favRecipes}) {
+function RecipeCard({recipe, favRecipes, toggleSwitch}) {
   const [isClicked, setIsClicked] = useState(false)
 
   function handleClick() {
@@ -63,8 +64,8 @@ function RecipeCard({recipe, favRecipes}) {
 
   return (
     <div className="reciperesults-animation">
-      <Card variant="outlined" sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
-      <CardActionArea >
+      <Card className="recipe-card" variant="outlined" style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}} sx={{ maxWidth: 305, boxShadow: 1, p: 2}}>
+      <Tooltip title="View recipe"><Link className="recipecard-link"to={`/reciperesults/${recipe.id}`}><CardActionArea>
       <CardHeader className="recipecard-header"
         title={recipe.title}
       />
@@ -74,15 +75,12 @@ function RecipeCard({recipe, favRecipes}) {
         image={recipe.image}s
         alt={recipe.title}
       />
-      </CardActionArea>
+      </CardActionArea></Link></Tooltip>
       <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites" disabled={isClicked}>
+        <Tooltip title="Add to favorites"><IconButton aria-label="add to favorites" disabled={isClicked}>
           <FavoriteIcon onClick={handleClick} />
-        </IconButton>
-        <Link to={`/reciperesults/${recipe.id}`}><IconButton>
-        <RestaurantOutlinedIcon />
-        </IconButton></Link>
-        <Typography variant="h6" style={{paddingLeft: "50px"}}>Nutrition</Typography>
+        </IconButton></Tooltip>
+        <Typography variant="h6" style={{paddingLeft: "60px"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

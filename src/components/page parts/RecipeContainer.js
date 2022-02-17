@@ -3,7 +3,7 @@ import RecipeCard from "./RecipeCard";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-function RecipeContainer({ recipes }) {
+function RecipeContainer({ recipes, toggleSwitch }) {
   const[favRecipes, setFavRecipes] = useState([])
 
   useEffect(() => {
@@ -13,7 +13,7 @@ function RecipeContainer({ recipes }) {
   }, [])
 
   const recipeCard = recipes.map((recipe) => {
-    return <RecipeCard key={recipe.id} recipe={recipe} favRecipes={favRecipes}/>;
+    return <RecipeCard key={recipe.id} recipe={recipe} toggleSwitch={toggleSwitch} favRecipes={favRecipes}/>;
   });
 
   return (
