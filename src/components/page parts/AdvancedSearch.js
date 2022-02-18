@@ -48,8 +48,8 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggle
  
   return (
     <div>
-      <Mui.Typography variant="h6">So do you want to go Over or Under? {toggleSwitch ? "Under" : "Over"}</Mui.Typography>
-      <Mui.TextField label="Include Ingredients" variant="standard" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
+      <Mui.Typography style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}} variant="h6">So do you want to go Over or Under? {toggleSwitch ? "Under /(_-_)ｌ" : "Over ᕙ(▀̿̿Ĺ̯̿̿▀̿ ̿) ᕗ"}</Mui.Typography>
+      <Mui.TextField style={{width: "270px"}} label="Include Additional Ingredients" variant="standard" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
         <br/>
       <form onSubmit={handleSubmit}>
         <select value={mealType} onChange={e => setMealType(e.target.value)}>
