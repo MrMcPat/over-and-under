@@ -47,9 +47,9 @@ useEffect(() => {
     
     return (
     <div className="recipe-page" style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}>
-        <img src={recipeInfo.image}></img>
-        <h1>{recipeInfo.title}</h1>
-        <Mui.Tooltip title="Add to favorites"><Mui.Button size="small" onClick={handleClick} disabled={isClicked}><FavoriteIcon style={{color: "#FF6363"}}/></Mui.Button></Mui.Tooltip>
+        <img style={{boxShadow: "8px 8px 1px #876445"}} src={recipeInfo.image}></img>
+        <h1 style={{paddingTop: "20px"}}>{recipeInfo.title}</h1>
+        <Mui.Tooltip title="Add to favorites"><Mui.Button size="small" onClick={handleClick} disabled={isClicked}><FavoriteIcon style={{color: isClicked ? "#D1D1D1" :"#FF6363"}}/></Mui.Button></Mui.Tooltip>
         <hr/>
         <h2>Nutrition Facts</h2>
         <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="710" width="1000"></iframe>

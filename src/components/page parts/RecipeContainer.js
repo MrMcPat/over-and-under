@@ -20,7 +20,7 @@ function RecipeContainer({ recipes, toggleSwitch }) {
     <div>
     <Box sx={{ flexGrow: 1, borderRadius: 2, columngap: 2 }}>
       <Grid style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}} container justifyContent="center" rowGap={10} columnGap={10} spacing={2} >
-        {recipes.length === 0 ? "No results returned (ノಠ益ಠ)ノ彡┻━┻" :recipeCard}
+        {recipes.length === 0 ? <p className="no-content">No results returned (ノಠ益ಠ)ノ彡┻━┻</p> :recipeCard}
       </Grid>
     </Box>
           

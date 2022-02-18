@@ -79,7 +79,7 @@ function RecipeCard({recipe, favRecipes, toggleSwitch}) {
       </CardActionArea></Link></Tooltip>
       <CardActions disableSpacing>
         <Tooltip title="Add to favorites"><IconButton aria-label="add to favorites" disabled={isClicked}>
-          <FavoriteIcon style={{color: "#FF6363"}} onClick={handleClick} />
+          <FavoriteIcon style={{color: isClicked ? "#D1D1D1" :"#FF6363"}} onClick={handleClick} />
         </IconButton></Tooltip>
         <Typography variant="h6" style={{paddingLeft: "60px", color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}><RestaurantOutlinedIcon /> Nutrition</Typography>
         <ExpandMore

@@ -283,3 +283,10 @@ code {
   animation: fadeIn 1s ease;
   animation-fill-mode: forwards;
 }
+
+.no-content {
+  opacity: 0;
+  animation: fadeIn 1s ease;
+  animation-delay: 0.75s;
+  animation-fill-mode: forwards;
+}
