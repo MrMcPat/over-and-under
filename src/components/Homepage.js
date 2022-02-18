@@ -18,7 +18,6 @@ const APIKey4 = "706bae3484f3466a81bd4afe4a6b402a";
 
 function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
   const [recipes, setRecipes] = useState([])
-  const [favRecipes, setFavRecipes] = useState([])
   const [search, setSearch] = useState("")
   const [advSearch, setAdvSearch] = useState({})
   const [toggleSearch, setToggleSearch] = useState(false)
@@ -28,8 +27,8 @@ function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
   const handleClose = () => setOpen(false);
 
   const URL = toggleSearch ? 
-  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleSwitch ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleSwitch ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleSwitch ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey3}`
-  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey3}`
+  `https://api.spoonacular.com/recipes/complexSearch?query=${advSearch.search}&cuisine=${advSearch.cuisine}&diet=${advSearch.diet}&intolerences=${advSearch.intolerence}&includeIngredients=${advSearch.ingredients}&type=${advSearch.mealType}&${toggleSwitch ? "minCarbs" : "maxCarbs"}=${advSearch.carbs}&${toggleSwitch ? "minProtein" : "maxProtein"}=${advSearch.protein}&${toggleSwitch ? "minCalories" : "maxCalories"}=${advSearch.calories}&number=12&apiKey=${APIKey4}`
+  :`https://api.spoonacular.com/recipes/complexSearch?query=${search}&minCarbs=0&minProtein=0&minCalories=0&number=12&apiKey=${APIKey4}`
 
   function handleSearch (newSearch) {
     setSearch(newSearch)
@@ -57,12 +56,6 @@ function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
         });
     }
   }, [toggleSearch ? advSearch : search]);
-
-  useEffect(() => {
-    fetch("http://localhost:8000/recipes")
-    .then(resp => resp.json())
-    .then(data => setFavRecipes(data))
-  }, [])
 
   return (
     <div>

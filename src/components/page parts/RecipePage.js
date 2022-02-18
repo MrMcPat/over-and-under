@@ -10,7 +10,7 @@ const [recipeInfo, setRecipeInfo] = useState([])
 const [isClicked, setIsClicked] = useState(false)
 
 useEffect(() => {
-    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=32b53701d7d54122a094792d559f0252`)
+    fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`)
     .then(resp => resp.json())
     .then(data => {setRecipeInfo(data)})
 }, [])
@@ -59,10 +59,10 @@ useEffect(() => {
         <Mui.Tooltip title="Add to favorites"><Mui.Button size="small"  disabled={isClicked}><FavoriteIcon style={{color: isClicked ? "#D1D1D1" :"#FF6363"}} onClick={handleClick}/></Mui.Button></Mui.Tooltip>
         <hr/>
         <h2>Nutrition Facts</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="710" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`} height="710" width="1000"></iframe>
         <hr/>
         <h2>Ingredients</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=32b53701d7d54122a094792d559f0252`} height="400" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/ingredientWidget?defaultCss=true&measure=metric&apiKey=706bae3484f3466a81bd4afe4a6b402a`} height="400" width="1000"></iframe>
         <hr/>
         <h2>Instructions</h2>
         <ol>
@@ -72,7 +72,7 @@ useEffect(() => {
         </ol>
         <hr/>
         <h2>Equipment</h2>
-        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="200" width="1000"></iframe>
+        <iframe src={`https://api.spoonacular.com/recipes/${params.id}/equipmentWidget?defaultCss=true&apiKey=706bae3484f3466a81bd4afe4a6b402a`} height="200" width="1000"></iframe>
     </div>
   )
 }
