@@ -76,6 +76,61 @@
       "proteinAmount": 10.28,
       "carbAmount": 5.65,
       "id": 7
+    },
+    {
+      "title": "Rice with Fried Egg and Sausage",
+      "image": "https://spoonacular.com/recipeImages/658290-312x231.jpg",
+      "calorie": "Calories",
+      "protein": "Protein",
+      "carb": "Carbohydrates",
+      "calorieAmount": 739.255,
+      "proteinAmount": 34.0855,
+      "carbAmount": 75.1899,
+      "id": 8
+    },
+    {
+      "title": "Steak with lemon and capers",
+      "image": "https://spoonacular.com/recipeImages/661531-556x370.jpg",
+      "calorie": "Calories",
+      "protein": "Fat",
+      "carb": "Saturated Fat",
+      "calorieAmount": 949.39,
+      "proteinAmount": 54.35,
+      "carbAmount": 21.83,
+      "id": 9
+    },
+    {
+      "title": "Pecan Rice Pilaf",
+      "image": "https://spoonacular.com/recipeImages/655524-312x231.jpg",
+      "calorie": "Calories",
+      "protein": "Protein",
+      "carb": "Carbohydrates",
+      "calorieAmount": 384.339,
+      "proteinAmount": 7.67247,
+      "carbAmount": 61.0796,
+      "id": 10
+    },
+    {
+      "title": "Autumn Cheesecake",
+      "image": "https://spoonacular.com/recipeImages/633091-556x370.jpg",
+      "calorie": "Calories",
+      "protein": "Fat",
+      "carb": "Saturated Fat",
+      "calorieAmount": 357.78,
+      "proteinAmount": 18.86,
+      "carbAmount": 9.42,
+      "id": 12
+    },
+    {
+      "title": "Baked Rice Pudding",
+      "image": "https://spoonacular.com/recipeImages/633756-556x370.jpg",
+      "calorie": "Calories",
+      "protein": "Fat",
+      "carb": "Saturated Fat",
+      "calorieAmount": 393.51,
+      "proteinAmount": 6.78,
+      "carbAmount": 3.32,
+      "id": 13
     }
   ]
 }

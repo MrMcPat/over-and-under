@@ -85,7 +85,7 @@ function Homepage({ landingPage, onLandingPage, onNavbar, toggleSwitch}) {
               <RecipeContainer recipes={recipes} toggleSwitch={toggleSwitch}/>
             </Route>
             <Route path="/reciperesults/:id">
-              <RecipePage favRecipes={favRecipes} toggleSwitch={toggleSwitch}/>
+              <RecipePage toggleSwitch={toggleSwitch}/>
             </Route>
           </Switch>
         </Mui.Box>

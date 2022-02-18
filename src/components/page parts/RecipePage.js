@@ -3,8 +3,9 @@ import { useParams } from "react-router-dom"
 import * as Mui from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function RecipePage({favRecipes, toggleSwitch}) {
+function RecipePage({ toggleSwitch}) {
 const params = useParams()
+const [favRecipes, setFavRecipes] = useState([])
 const [recipeInfo, setRecipeInfo] = useState([])
 const [isClicked, setIsClicked] = useState(false)
 
@@ -12,6 +13,12 @@ useEffect(() => {
     fetch(`https://api.spoonacular.com/recipes/${params.id}/information?includeNutrition=true&apiKey=32b53701d7d54122a094792d559f0252`)
     .then(resp => resp.json())
     .then(data => {setRecipeInfo(data)})
+}, [])
+
+useEffect(() => {
+  fetch("http://localhost:8000/recipes")
+  .then(resp => resp.json())
+  .then(data => setFavRecipes(data))
 }, [])
 
     if(recipeInfo.length == 0) {return null}
@@ -49,7 +56,7 @@ useEffect(() => {
     <div className="recipe-page" style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}>
         <img style={{boxShadow: "8px 8px 1px #876445"}} src={recipeInfo.image}></img>
         <h1 style={{paddingTop: "20px"}}>{recipeInfo.title}</h1>
-        <Mui.Tooltip title="Add to favorites"><Mui.Button size="small" onClick={handleClick} disabled={isClicked}><FavoriteIcon style={{color: isClicked ? "#D1D1D1" :"#FF6363"}}/></Mui.Button></Mui.Tooltip>
+        <Mui.Tooltip title="Add to favorites"><Mui.Button size="small"  disabled={isClicked}><FavoriteIcon style={{color: isClicked ? "#D1D1D1" :"#FF6363"}} onClick={handleClick}/></Mui.Button></Mui.Tooltip>
         <hr/>
         <h2>Nutrition Facts</h2>
         <iframe src={`https://api.spoonacular.com/recipes/${params.id}/nutritionWidget?defaultCss=true&apiKey=32b53701d7d54122a094792d559f0252`} height="710" width="1000"></iframe>
