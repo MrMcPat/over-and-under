@@ -290,3 +290,14 @@ code {
   animation-delay: 0.75s;
   animation-fill-mode: forwards;
 }
+
+
+  .select-style {
+  text-align: center;
+}
+
+select {
+  text-align: center;
+  width: 80%;
+  margin: 1% !important;
+}

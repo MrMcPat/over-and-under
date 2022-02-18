@@ -46,14 +46,16 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggle
     }
   }, [toggleSwitch])
 
+ 
   
   return (
     <div>
-      <Mui.Typography variant="h6">So do you want to go Over or Under? {toggleSwitch ? "Under" : "Over"}</Mui.Typography>
-      <Mui.TextField label="Include Ingredients" variant="standard" value={ingredients} onChange={e => setIngredients(e.target.value)}></Mui.TextField>
+      <Mui.Typography align='center' variant="h3">{toggleSwitch ? "Under" : "Over"}</Mui.Typography>
+      <Mui.Typography align='center'><Mui.TextField label="Include Ingredients" variant="outlined" margin='dense' value={ingredients} onChange={e => setIngredients(e.target.value)} ></Mui.TextField></Mui.Typography>
         <br/>
       <form onSubmit={handleSubmit}>
-        <select value={mealType} onChange={e => setMealType(e.target.value)}>
+        <div class="select-style">
+        <select sx={{ px: 7 }} variant='outlined' value={mealType} onChange={e => setMealType(e.target.value)}>
           <option value="">Select Meal Type</option>
           <option value="">Main Course</option>
           <option value="">Side Dish</option>
@@ -70,7 +72,8 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggle
           <option value="">Snack</option>
           <option value="">Drink</option>
         </select>
-        <select value={cuisine} onChange={e => setCuisine(e.target.value)}>
+        <br/>
+        <select variant='outlined' value={cuisine} onChange={e => setCuisine(e.target.value)}>
           <option value="">Select Cuisine</option>
           <option value="african">African</option>
           <option value="american">American</option>
@@ -97,7 +100,8 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggle
           <option value="thai">Thai</option>
           <option value="vietnamese">Vietnamese</option>
         </select>
-        <select value={diet} onChange={e => setDiet(e.target.value)}>
+        <br/>
+        <select variant='outlined' value={diet} onChange={e => setDiet(e.target.value)}>
           <option value="">Select Diet</option>
           <option value="gluten free">Gluten Free</option>
           <option value="ketogenic">Ketogenic</option>
@@ -108,7 +112,8 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggle
           <option value="pescetarian">Pescetarian</option>
           <option value="paleo">Paleo</option>
         </select>
-        <select value={intolerence} onChange={e => setIntolerence(e.target.value)}>
+        <br/>
+        <select variant='outlined'  value={intolerence} onChange={e => setIntolerence(e.target.value)}>
           <option value="">Select Intolerence</option>
           <option value="dairy">Dairy</option>
           <option value="egg">Egg</option>
@@ -123,21 +128,24 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggle
           <option value="tree nut">Tree Nut</option>
           <option value="wheat">Wheat</option>
         </select>
+        </div>
 
-        <Mui.Typography variant="h6" component="label">{toggleSwitch ? "Max Carbs (At Max 40g)" : "Min Carbs (At Least 20g)"}</Mui.Typography>
-        <input type="number" min={toggleSwitch ? "0" : "20"} max={toggleSwitch ? "40" : "99999"} value={carbs} onChange={e => setCarbs(e.target.value)}></input>
+        <Mui.Typography sx={{ ml: 8 }} variant="h6" component="label">{toggleSwitch ? "Max Carbs (At Max 40g)" : "Min Carbs (At Least 20g)"}</Mui.Typography>
+        <div class="select-style"><input margin-left="20px" type="number" min={toggleSwitch ? "0" : "20"} max={toggleSwitch ? "40" : "99999"} value={carbs} onChange={e => setCarbs(e.target.value)}></input></div>
         <br/>
-        <Mui.Typography variant="h6" component="label">{toggleSwitch ? "Max Protein (At Max 30g)" : "Min Protein (At Least 10g)"}</Mui.Typography>
-        <input type="number" min={toggleSwitch ? "0" : "10"} max={toggleSwitch ? "30" : "99999"} value={protein} onChange={e => setProtein(e.target.value)}></input>
+        <Mui.Typography sx={{ ml: 8 }} variant="h6" component="label">{toggleSwitch ? "Max Protein (At Max 30g)" : "Min Protein (At Least 10g)"}</Mui.Typography>
+        <div class="select-style"><input type="number" min={toggleSwitch ? "0" : "10"} max={toggleSwitch ? "30" : "99999"} value={protein} onChange={e => setProtein(e.target.value)}></input></div>
         <br/>
-        <Mui.Typography variant="h6" component="label">{toggleSwitch ? "Max Calories (At Max 600)" : "Min Calories (At Least 200)"}</Mui.Typography>
-        <input type="number" min={toggleSwitch ? "0" : "200"} max={toggleSwitch ? "600" : "99999"} value={calories} onChange={e => setCalories(e.target.value)}></input>
-        <Mui.Button type="submit" variant="outlined" onClick={onToggleAdvSearch}>Search</Mui.Button>
-        <br />
+        <Mui.Typography sx={{ ml: 8 }} variant="h6" component="label">{toggleSwitch ? "Max Calories (At Max 600)" : "Min Calories (At Least 200)"}</Mui.Typography>
+        <div class="select-style"><input type="number" min={toggleSwitch ? "0" : "200"} max={toggleSwitch ? "600" : "99999"} value={calories} onChange={e => setCalories(e.target.value)}></input></div>
+        <br/>
+        <Mui.Button variant="outlined" onClick={onClose}>Back</Mui.Button><Mui.Button sx={{ ml: 20 }} type="submit" variant="outlined" onClick={onToggleAdvSearch}>Search</Mui.Button>
+        
       </form>
-      <Mui.Button onClick={onClose}>Back</Mui.Button>
-
+      
+      
     </div>
+    
   )
 }
 

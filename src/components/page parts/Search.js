@@ -5,7 +5,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AdvancedSearch from './AdvancedSearch'
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 
 
@@ -40,7 +39,7 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, landi
       <Mui.Typography align="center" style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}>
       <form id="form-container" onSubmit={handleSubmit}>
         <Mui.Typography variant="h6">Search for recipes ( ˘▽˘)っ♨</Mui.Typography>
-        <Mui.TextField style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}} id="filled-basic" label="Search" variant="standard" value={search}  onChange={e => setSearch(e.target.value)}/>
+        <Mui.TextField variant="outlined" style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}} id="filled-basic" label="Search" value={search}  onChange={e => setSearch(e.target.value)}/>
         <Mui.Tooltip title="Advanced search"><SettingsIcon onClick={handleOpen}/></Mui.Tooltip>
         <Mui.Fab type="submit" style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}} onClick={onToggleSearch} size="small">
           <SearchIcon style={{color: toggleSwitch ? "#632626" : "#A90409", transition: "1s"}}/>
@@ -52,7 +51,6 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, landi
         aria-labelledby="modal-modal-title"
       >
         <Box sx={style} style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">Advanced Search</Typography>
           <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onToggleAdvSearch={onToggleAdvSearch} onClose={handleClose} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} toggleSwitch={toggleSwitch}/>
         </Box>
       </Modal>
