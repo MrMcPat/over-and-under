@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { useHistory } from "react-router-dom";
 import * as Mui from '@mui/material';
 
-function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggleSwitch}) {
+function AdvancedSearch({search, onNavbar, onAdvSearch, onToggleAdvSearch, onClose, toggleSwitch}) {
   const [mealType, setMealType] = useState("")
   const [cuisine, setCuisine] = useState("")
   const [diet, setDiet] = useState("")
@@ -16,7 +16,8 @@ function AdvancedSearch({search, onAdvSearch, onToggleAdvSearch, onClose, toggle
   console.log(toggleSwitch)
 
   function handleSubmit (e) {
-    e.preventDefault();
+    e.preventDefault()
+    onNavbar()
     const advSearchData = {
       search: search,
       mealType: mealType,

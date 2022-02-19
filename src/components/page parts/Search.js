@@ -51,7 +51,7 @@ function Search({onSearch, onAdvSearch, onToggleSearch, onToggleAdvSearch, landi
         aria-labelledby="modal-modal-title"
       >
         <Box sx={style} style={{background: toggleSwitch ? "#D3ECA7" : "#FFFDA2", transition: "1s"}}>
-          <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onToggleAdvSearch={onToggleAdvSearch} onClose={handleClose} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} toggleSwitch={toggleSwitch}/>
+          <AdvancedSearch onAdvSearch={onAdvSearch} search={search} onNavbar={onNavbar} onToggleAdvSearch={onToggleAdvSearch} onClose={handleClose} open={open} setOpen={setOpen} handleOpen={handleOpen} handleClose={handleClose} toggleSwitch={toggleSwitch}/>
         </Box>
       </Modal>
       </Mui.Typography>        
