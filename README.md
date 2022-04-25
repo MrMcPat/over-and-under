@@ -18,4 +18,4 @@
 
 # Credits
 
-Developed by Patrick Liang and Lynden Lim.
+Developed by Patrick Liang and Jonathan Laureano.
