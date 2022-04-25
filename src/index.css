@@ -6,9 +6,29 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
 }
 
 @keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
   0% {
     opacity: 0;
   }
@@ -54,15 +74,8 @@ code {
   text-decoration: none;
   padding: 20px;
   animation: fadeIn 1s ease;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
 }
 
 .navlink-hidden {
@@ -84,6 +97,8 @@ code {
 
 .display-none{
   animation: fadeOut 1s ease;
+  -webkit-animation: fadeOut 1s ease;
+  -moz-animation: fadeOut 1s ease;
   animation-fill-mode: forwards;
   display: none;
 }
@@ -98,13 +113,55 @@ code {
   }
 }
 
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
 .carousel-display-none {
   animation: fadeCarouselOut 1s ease;
+  -webkit-animation: fadeCarouselOut 1s ease;
+  -moz-animation: fadeCarouselOut 1s ease;
   animation-fill-mode: forwards;
   display: none;
 }
 
 @keyframes fadeCarouselOut {
+  0% {
+    opacity: 1;
+    top: -100px;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeCarouselOut {
+  0% {
+    opacity: 1;
+    top: -100px;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeCarouselOut {
   0% {
     opacity: 1;
     top: -100px;
@@ -121,6 +178,8 @@ code {
 .display-search {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-fill-mode: forwards;
 }
 
@@ -153,6 +212,8 @@ code {
 .reciperesults-animation {
   opacity: 0;
   animation: cardSlideIn 1.5s ease-out;
+  -webkit-animation: cardSlideIn 1.5s ease-out;
+  -moz-animation: cardSlideIn 1.5s ease-out;
   animation-fill-mode: forwards;
   position: relative;
   transition: transform 0.2s;
@@ -173,6 +234,28 @@ code {
   }
 }
 
+@-webkit-keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+@-moz-keyframes cardSlideIn {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
 .favoritelist {
   transition: transform 0.2s;
 }
@@ -181,118 +264,170 @@ code {
   transform: scale(1.05)
 }
 
-.favoritelist-animation-1 {
+/* .favoritelist-animation-1 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-2 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.1s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-3 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.2s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-4 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.3s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-5 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.4s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-6 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.5s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-7 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.6s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-8 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.7s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-9 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.8s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-10 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.9s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-11 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 1s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
 }
 
 .favoritelist-animation-12 {
   opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 1.2s;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
   position: relative;
-}
+} */
 
 .recipe-page {
   text-align: center;
   list-style-position: inside;
-  opacity: 0;
+  opacity: 1 !important;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
 }
 
 .no-content {
-  opacity: 0;
   animation: fadeIn 1s ease;
+  -webkit-animation: fadeIn 1s ease;
+  -moz-animation: fadeIn 1s ease;
   animation-delay: 0.75s;
   animation-fill-mode: forwards;
 }
 
 
-  .select-style {
+.select-style {
   text-align: center;
 }
 

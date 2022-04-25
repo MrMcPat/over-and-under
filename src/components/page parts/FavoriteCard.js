@@ -29,7 +29,7 @@ const ExpandMore = styled((props) => {
 function FavoriteCard({ recipe, toggleSwitch, onDelete }) {
   function handleClick() {
     console.log(recipe);
-    fetch(`http://localhost:8000/recipes/${recipe.id}`, {
+    fetch(`https://over-and-under-json-server.herokuapp.com/recipes/${recipe.id}`, {
       method: "DELETE",
     })
       .then(resp => resp.json())

@@ -9,7 +9,7 @@ function FavoriteContainer({toggleSwitch}) {
   const [filter, setFilter] = useState("")
 
   useEffect(() => {
-    fetch("http://localhost:8000/recipes")
+    fetch("https://over-and-under-json-server.herokuapp.com/recipes")
     .then(resp => resp.json())
     .then(data => setFavRecipes(data))
   }, [])

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import * as Mui from "@mui/material";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
-function RecipePage({ toggleSwitch}) {
+function RecipePage({toggleSwitch}) {
 const params = useParams()
 const [favRecipes, setFavRecipes] = useState([])
 const [recipeInfo, setRecipeInfo] = useState([])
@@ -16,7 +16,7 @@ useEffect(() => {
 }, [])
 
 useEffect(() => {
-  fetch("http://localhost:8000/recipes")
+  fetch("https://over-and-under-json-server.herokuapp.com/recipes")
   .then(resp => resp.json())
   .then(data => setFavRecipes(data))
 }, [])
@@ -31,7 +31,7 @@ useEffect(() => {
           })
           if (clickedRecipes) {alert("Already added to favorites!")}
           if (!clickedRecipes) {
-            fetch("http://localhost:8000/recipes", {
+            fetch("https://over-and-under-json-server.herokuapp.com/recipes", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json"

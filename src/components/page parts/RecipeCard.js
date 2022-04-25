@@ -36,7 +36,7 @@ function RecipeCard({recipe, favRecipes, toggleSwitch}) {
     })
     if (clickedRecipes) {alert("Already added to favorites!")}
     if (!clickedRecipes) {
-      fetch("http://localhost:8000/recipes", {
+      fetch("https://over-and-under-json-server.herokuapp.com/recipes", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

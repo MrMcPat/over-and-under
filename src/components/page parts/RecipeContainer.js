@@ -7,7 +7,7 @@ function RecipeContainer({ recipes, toggleSwitch }) {
   const[favRecipes, setFavRecipes] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:8000/recipes")
+    fetch("https://over-and-under-json-server.herokuapp.com/recipes")
     .then(resp => resp.json())
     .then(data => setFavRecipes(data))
   }, [])
